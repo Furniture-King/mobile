@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FournitureKing</string>
+    <string name="title_home">Home</string>
+    <string name="title_history">History</string>
+    <string name="title_basket">Basket</string>
+    <string name="title_settings">Setting</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="signIn">Connexion</string>
+    <string name="connecte_toi">Connecte toi !</string>
+    <string name="se_souvenir_de_moi">Se souvenir de moi</string>
+    <string name="inscription">Inscription</string>
+    <string name="valider">valider</string>
+    <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
+    <string name="confirm_password">confirmer le mot de passe</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="inscrit_toi">Inscrit toi !</string>
+    <string name="a_warm_coffee_next_to_a_book_on_a_beautiful_table">A warm coffee next to a book on a beautiful table</string>
+    <string name="search_bar_home">Table basse</string>
+    <string name="cover">Cover</string>
+    <string name="title_place_holder">Title Place Holder</string>
+    <string name="author_placeholder">Author PlaceHolder</string>
+</resources>
