@@ -3,24 +3,26 @@ package com.example.app.ui.data.viewHolders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import app.databinding.CardCellBinding
-import com.example.app.ui.data.interfaces.ArticleClickListener
 import com.example.app.ui.data.models.Product
 import com.example.app.ui.data.models.listArticleBasket
+import com.example.app.ui.data.services.ProductService
 
 // Display manager of the card on the home page / fragment
 class CardViewHolder(
     private val cardCellBinding: CardCellBinding,
-    private val clickListener: ArticleClickListener
+    private val productService: ProductService
 ) : RecyclerView.ViewHolder(cardCellBinding.root) {
 
     // Allow to manipulate the current article that the user have clicked
-    fun bindArticle(article: Product) {
-        cardCellBinding.cover.setImageResource(article.cover)
-        cardCellBinding.title.text = article.title
-        cardCellBinding.author.text = article.author
-        addOrRemoveArticleFromBasket(article)
+    fun bindArticle(product: Product) {
+//        cardCellBinding.imgProduct.setImageResource(product.imgProduct)
+        cardCellBinding.tvTitle.text = product.name
+        cardCellBinding.tvDescription.text = product.description
+        val price ="${product.price} e"
+        cardCellBinding.tvPrice.text = price
+        addOrRemoveArticleFromBasket(product)
         cardCellBinding.cardView.setOnClickListener {
-            clickListener.onClick(article)
+            productService.onClick(product)
         }
     }
 
