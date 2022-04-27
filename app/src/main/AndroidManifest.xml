@@ -25,7 +25,11 @@
         <activity android:name="com.example.app.ui.pages.authentication.SignUpPage" />
         <activity android:name="com.example.app.ui.pages.authentication.SignInPage" />
         <activity android:name="com.example.app.ui.pages.home.HomeActivitySearch"/>
-        <activity android:name="com.example.app.ui.data.recycleView.DetailActivity"/>
+        <activity android:name="com.example.app.ui.data.DetailActivity"/>
+
+        <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -1,8 +1,8 @@
-package com.example.app.ui.pages.home
+package com.example.app.ui.pages
 
-import com.example.app.ui.data.Comment
-import com.example.app.ui.data.Post
-import com.example.app.ui.data.User
+import com.example.app.ui.data.test.Comment
+import com.example.app.ui.data.test.Post
+import com.example.app.ui.data.test.User
 import retrofit2.Response
 import retrofit2.http.*
 

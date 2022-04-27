@@ -1,10 +1,11 @@
-package com.example.app.ui.data.recycleView
+package com.example.app.ui.data.models
 
-var articleList = mutableListOf<Article>()
+var articleList = mutableListOf<Product>()
+var listArticleBasket = mutableListOf<Product>()
 
 val ARTICLE_ID_EXTRA = "articleExtra"
 
-class Article(
+class Product(
     var cover: Int,
     var author: String,
     var title: String,

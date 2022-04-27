@@ -1,8 +1,11 @@
-package com.example.app.ui.data.recycleView
+package com.example.app.ui.data
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import app.databinding.ActivityDetailBinding
+import com.example.app.ui.data.models.ARTICLE_ID_EXTRA
+import com.example.app.ui.data.models.Product
+import com.example.app.ui.data.models.articleList
 
 class DetailActivity : AppCompatActivity()
 {
@@ -25,7 +28,7 @@ class DetailActivity : AppCompatActivity()
         }
     }
 
-    private fun articleFromID(articleID: Int): Article?
+    private fun articleFromID(articleID: Int): Product?
     {
         for(article in articleList)
         {

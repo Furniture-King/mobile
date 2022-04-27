@@ -1,4 +1,4 @@
-package com.example.app.ui.data
+package com.example.app.ui.data.test
 
 data class Comment(
     val id: Int? = null,
