@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+    <TextView
+            android:text="Moyen de paiement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPayment"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+
+    <TextView
+            android:text="Ajouter un moyen de paiement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvSwt"
+            app:layout_constraintStart_toEndOf="@+id/swtAddMeansOfPayment"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@+id/swtAddMeansOfPayment"
+            app:layout_constraintBottom_toBottomOf="@+id/swtAddMeansOfPayment" />
+
+    <fragment
+            android:name="com.example.app.ui.OtherFragment.ButtonBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back"
+            android:id="@+id/imgBack"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvPayment"
+            app:layout_constraintHorizontal_bias="0.494">
+
+        <TextView
+                android:text="Aucun moyen de paiement enregistré 😞"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEmptyView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recyclerViewMeansOfPayment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvEmptyView"
+                android:layout_marginTop="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/swtAddMeansOfPayment"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            android:layout_marginTop="16dp" />
+
+    <FrameLayout
+            android:id="@+id/ftMeansOfPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/swtAddMeansOfPayment"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.example.app.ui.OtherFragment.MeansOfPayment" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

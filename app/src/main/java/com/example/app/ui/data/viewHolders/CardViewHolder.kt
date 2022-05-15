@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import app.databinding.CardCellBinding
 import com.example.app.ui.data.models.Product
-import com.example.app.ui.data.models.listArticleBasket
+import com.example.app.ui.data.models.listProductBasket
 import com.example.app.ui.data.services.ProductService
 
 // Display manager of the card on the home page / fragment
@@ -43,12 +43,12 @@ class CardViewHolder(
 
     // Add an article from the basket
     private fun addArticleToBasket(article: Product) {
-        listArticleBasket.add(article)
+        listProductBasket.add(article)
     }
 
     // Remove an article from the basket
     private fun removeArticleToBasket(article: Product) {
-        listArticleBasket.remove(article)
+        listProductBasket.remove(article)
     }
 
     // Manage the toggle event on heart's article click

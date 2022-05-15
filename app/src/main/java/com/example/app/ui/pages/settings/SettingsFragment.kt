@@ -1,14 +1,18 @@
 package com.example.app.ui.pages.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import app.databinding.FragmentSettingsBinding
-import com.example.app.ui.pages.history.HistoryViewModel
+import com.example.app.ui.data.models.client
+import com.example.app.ui.pages.MainActivity
+
 
 class SettingsFragment : Fragment() {
 
@@ -23,17 +27,33 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val settingsViewModel =
-            ViewModelProvider(this).get(HistoryViewModel::class.java)
 
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        settingsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val userProfil: TextView = binding.tvUserProfil
+        userProfil.setOnClickListener {
+            val intent = Intent(this.context, ProfilActivity::class.java)
+            startActivity(intent)
+        }
+        val tvAbout: TextView = binding.tvAbout
+        tvAbout.setOnClickListener {
+            val intent = Intent(this.context, AboutUsActivity::class.java)
+            startActivity(intent)
         }
 
+        val tvPayment: TextView = binding.tvPayment
+        tvPayment.setOnClickListener {
+            val intent = Intent(this.context, PaymentActivity::class.java)
+            startActivity(intent)
+        }
+
+        val logout: Button = binding.logout
+        logout.setOnClickListener {
+            logout()
+            val intent = Intent(this.context, MainActivity::class.java)
+            startActivity(intent)
+        }
         return root
     }
 
@@ -41,4 +61,10 @@ class SettingsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun logout() {
+        client = null
+    }
 }
+
+

@@ -30,7 +30,7 @@ class HistoryFragment : Fragment() {
 
         val textView: TextView = binding.textHome
         historyViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            textView.text = "PD"
         }
         return root
     }

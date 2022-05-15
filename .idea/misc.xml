@@ -41,15 +41,24 @@
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/drawable/styles_navbar.xml" value="0.309" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/drawable/styles_navyb_button.xml" value="0.309" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/drawable/styles_search_bar.xml" value="0.309" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_about_us.xml" value="0.2556648140230868" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_add_credit_card.xml" value="0.22" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_payment.xml" value="0.2556648140230868" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_profil.xml" value="0.299637352674524" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/activity_sign_up.xml" value="0.2539546814878153" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/card_cell.xml" value="0.28391167192429023" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/card_list.xml" value="0.20222317229585293" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_basket.xml" value="0.20222317229585293" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_button_back.xml" value="0.2539546814878153" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_history.xml" value="0.29782411604714415" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_home_search.xml" value="0.29782411604714415" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_means_of_payment.xml" value="0.2556648140230868" />
         <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/layout/fragment_settings.xml" value="0.29782411604714415" />
+        <entry key="..\:/PROJETS/PROJET-2022/FournitureKingMobileApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2539546814878153" />
       </map>
     </option>
   </component>

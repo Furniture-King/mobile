@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="25dp"
-        android:queryHint="@string/search_bar_home"
+        android:queryHint="@string/searchBarHome"
         android:iconifiedByDefault="false"
         android:background="@drawable/styles_search_bar"
         android:queryBackground="@android:color/transparent">

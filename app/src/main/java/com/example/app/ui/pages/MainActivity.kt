@@ -2,13 +2,19 @@ package com.example.app.ui.pages
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import app.R
 import app.databinding.ActivityMainBinding
+import com.example.app.ui.pages.basket.BasketFragment
+import com.example.app.ui.pages.history.HistoryFragment
+import com.example.app.ui.pages.home.HomeFragment
+import com.example.app.ui.pages.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -24,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         val navView: BottomNavigationView = binding.navView
 
@@ -43,6 +48,4 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
     }
-
-
 }
