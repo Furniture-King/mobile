@@ -1,38 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-package="app">
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="app">
 
-<application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
-    <activity
-            android:name="com.example.app.ui.pages.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity android:name="com.example.app.ui.pages.authentication.SignUpPage" />
-    <activity android:name="com.example.app.ui.pages.authentication.SignInPage" />
-    <activity android:name="com.example.app.ui.pages.home.HomeActivitySearch" />
-    <activity android:name="com.example.app.ui.pages.home.DetailActivity" />
-    <activity android:name="com.example.app.ui.pages.settings.ProfilActivity" />
-    <activity android:name="com.example.app.ui.pages.settings.AboutUsActivity" />
-    <activity android:name="com.example.app.ui.pages.settings.AddCreditCardActivity" />
-    <activity android:name="com.example.app.ui.pages.settings.PaymentActivity" />
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.MyApplication">
+        <activity
+                android:name="com.example.app.ui.MainActivity"
+                android:exported="true"
+                android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-    <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-</application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.app.ui.pages.authentication.SignUpPage" />
+        <activity android:name="com.example.app.ui.pages.authentication.SignInPage" />
+        <activity android:name="com.example.app.ui.pages.search.HomeActivitySearch" />
+        <activity android:name="com.example.app.ui.pages.home.DetailActivity" />
+        <activity android:name="com.example.app.ui.pages.settings.ProfilActivity" />
+        <activity android:name="com.example.app.ui.pages.settings.AboutUsActivity" />
+        <activity android:name="com.example.app.ui.pages.settings.AddCreditCardActivity" />
+        <activity android:name="com.example.app.ui.pages.settings.PaymentActivity" />
+        <activity android:name="com.example.app.ui.pages.settings.CountriesActivity" />
+        <activity android:name="com.example.app.ui.pages.search.ResultSearchCategoryActivity" />
+
+        <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
+    </application>
 
 </manifest>

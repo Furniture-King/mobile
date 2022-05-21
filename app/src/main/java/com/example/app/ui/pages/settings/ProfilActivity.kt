@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import app.databinding.ActivityProfilBinding
-import com.example.app.ui.data.models.clientTest
+import com.example.app.ui.api.models.clientTest
 import com.example.app.ui.pages.home.HomeFragment
 
 

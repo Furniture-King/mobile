@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import app.databinding.FragmentSettingsBinding
-import com.example.app.ui.data.models.client
-import com.example.app.ui.pages.MainActivity
+import com.example.app.ui.api.models.client
+import com.example.app.ui.MainActivity
 
 
 class SettingsFragment : Fragment() {

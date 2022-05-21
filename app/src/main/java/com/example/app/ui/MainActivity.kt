@@ -1,20 +1,14 @@
-package com.example.app.ui.pages
+package com.example.app.ui
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import app.R
 import app.databinding.ActivityMainBinding
-import com.example.app.ui.pages.basket.BasketFragment
-import com.example.app.ui.pages.history.HistoryFragment
-import com.example.app.ui.pages.home.HomeFragment
-import com.example.app.ui.pages.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -39,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
+                R.id.navigation_search,
                 R.id.navigation_history,
                 R.id.navigation_basket,
                 R.id.navigation_settings,

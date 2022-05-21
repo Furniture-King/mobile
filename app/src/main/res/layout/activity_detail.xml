@@ -26,11 +26,10 @@
             android:src="@drawable/ic_beige_chair"
             android:adjustViewBounds="true"
             android:contentDescription="@string/cover"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/imgBack"
+            tools:ignore="MissingConstraints"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -44,27 +43,10 @@
             android:lines="2"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/imgProduct"
-            app:layout_constraintBottom_toTopOf="@+id/tvPrice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent" />
+            tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/authorPlaceHolder"
-            android:textColor="@color/darkGray"
-            android:textSize="18sp"
-            android:lines="1"
-            android:fontFamily="@font/poiret_one"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            app:layout_constraintBottom_toTopOf="@+id/tvDescription"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
             android:id="@+id/tvDescription"
@@ -74,11 +56,64 @@
             android:text="@string/authorPlaceHolder"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent" />
+            tools:layout_editor_absoluteX="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            android:layout_marginTop="16dp" />
 
+    <Button
+            android:text="Acheter maintenant pour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="100dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:id="@+id/constraintLayout2"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+                android:id="@+id/tvRatingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvRatingBar"
+                android:textColor="@color/darkGray"
+                android:lines="1"
+                android:fontFamily="@font/poiret_one"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintVertical_bias="0.583"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleSmall"
+                android:stepSize="0.5"
+                android:numStars="5"
+                android:rating="2.5"
+                android:isIndicator="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvRatingbar"
+                app:layout_constraintHorizontal_bias="0.128"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

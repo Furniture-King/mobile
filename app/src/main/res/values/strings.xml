@@ -2,7 +2,7 @@
     <string name="app_name">FournitureKing</string>
     <string name="titleHome">Home</string>
     <string name="titleHistory">History</string>
-    <string name="titleBasket">Basket</string>
+    <string name="titleBasket">Shopping Cart</string>
     <string name="titleSettings">Setting</string>
     <string name="email">Email</string>
     <string name="signIn">Connexion</string>
@@ -15,6 +15,9 @@
     <string name="password">Mot de passe</string>
     <string name="signUpNow">Inscrit toi !</string>
     <string name="searchBarHome">Table basse</string>
+    <string name="searchResultTitle">Résultat(s) de recherche</string>
+    <string name="searchResultCategory">Chaise</string>
+    <string name="titleSearch">Recherche</string>
 
     <string name="cover">Cover</string>
     <string name="titlePlaceHolder">Title Place Holder</string>
@@ -22,7 +25,8 @@
     <string name="popularArticle">Populaire en ce moment...</string>
     <string name="whatIsUp">Quoi de neuf ?</string>
     <string name="price">59€</string>
-    <string name="tvRatingBar">(avis)</string>
+    <string name="tvRatingBar">4.9/5</string>
+    <string name="tvOpinion">(avis)</string>
     <string name="firstName">Prénom</string>
     <string name="phone">Mobile</string>
     <string name="lastName">Nom</string>

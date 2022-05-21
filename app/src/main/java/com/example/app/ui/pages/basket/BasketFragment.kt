@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import app.databinding.FragmentBasketBinding
+import com.example.app.ui.api.adaptaters.ProductsAdapter
+import com.example.app.ui.api.models.listProductShoppingCart
 
 class BasketFragment : Fragment() {
     private var _binding: FragmentBasketBinding? = null
@@ -20,25 +22,17 @@ class BasketFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val settingViewModel =
-            ViewModelProvider(this).get(BasketViewModel::class.java)
+
         _binding = FragmentBasketBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val basketFragment = this
-//        binding.recyclerViewBasket.apply {
-//            layoutManager = GridLayoutManager(this@BasketFragment.context, 2)
-//            adapter = CardAdapter(listArticleBasket, basketFragment)
-//        }
+        binding.recyclerViewBasket.apply {
+            layoutManager = GridLayoutManager(this@BasketFragment.context,2)
+            adapter=ProductsAdapter(listProductShoppingCart)
+        }
 
         return root
     }
-
-//    override fun onClick(article: Product) {
-//        val intent = Intent(this@BasketFragment.context, DetailActivity::class.java)
-//        intent.putExtra(ARTICLE_ID_EXTRA, article.id)
-//        startActivity(intent)
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

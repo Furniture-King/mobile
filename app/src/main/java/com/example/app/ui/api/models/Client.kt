@@ -1,6 +1,8 @@
-package com.example.app.ui.data.models
+package com.example.app.ui.api.models
 
 
+import android.os.Parcel
+import android.os.Parcelable
 import java.util.*
 import org.bson.types.ObjectId
 import java.io.Serializable
@@ -8,7 +10,7 @@ import java.io.Serializable
 
 var client: Client? = null;
 var clientTest = Client(
-    ObjectId ("62794e36099815f27501623d"),
+    ObjectId("62794e36099815f27501623d"),
     1,
     "test8@test.test",
     "$2a$12\$meY5oZ.xwJEz3HzGjsA7l.",
@@ -24,8 +26,22 @@ var clientTest = Client(
 )
 
 
-val CLIENT_ID_EXTRA = "clientExtra"
-
+//data class Client(var newEmail: String, var password: String) : Serializable {
+//    var id: ObjectId? = null
+//    var status: Int? = null
+//    var email: String? = newEmail
+//    var passwordHash: String? = password
+//    var passwordSalt: String? = null
+//    var civility: Int? = null
+//    var lastName: String? = null
+//    var firstName: String? = null
+//    var phone: String? = null
+//    var favProduct: Array<Product>? = null
+//    var nbConnection: Int? = null
+//    var createdAt: Date? = null
+//    var updatedAt: Date? = null
+//
+//}
 
 data class Client(
     var id: ObjectId?,

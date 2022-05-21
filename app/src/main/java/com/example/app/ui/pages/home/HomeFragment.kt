@@ -6,33 +6,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import app.databinding.FragmentHomeBinding
-import com.example.app.ui.data.ServiceBuilder
-import com.example.app.ui.data.adaptaters.ProductsAdapter
-import com.example.app.ui.data.services.ProductService
-import com.example.app.ui.data.models.Product
-import com.example.app.ui.data.models.client
-import com.example.app.ui.data.models.productList
-import com.example.app.ui.pages.ApiService
+import com.example.app.ui.api.ServiceBuilder
+import com.example.app.ui.api.adaptaters.ProductsAdapter
+import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.models.client
+import com.example.app.ui.api.ApiService
+import com.example.app.ui.api.models.productList
 import com.example.app.ui.pages.authentication.SignInPage
 import com.example.app.ui.pages.settings.SettingsFragment
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class HomeFragment : Fragment() {
@@ -49,48 +39,20 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//            executeCall(textView)
-//
-//        }
-
         isLogged()
 
-        val imageView: ImageView = binding.imgSearchBarGlobal
-        imageView.setOnClickListener {
-            val intent = Intent(this.context, HomeActivitySearch::class.java)
-            startActivity(intent)
-
+//        val imgSearchBarCategory: ImageView = binding.imgSearchBarCategory
+//        imgSearchBarCategory.setOnClickListener {
+//            findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
+//        }
+        if (productList.isEmpty()) {
+            populateProducts()
+        } else {
+            displayProducts()
         }
-//        populatePopularArticles()
-//
-//        binding.recyclerViewPopularArticle.apply {
-//
-//            layoutManager =
-//                LinearLayoutManager(this@HomeFragment.context, LinearLayoutManager.HORIZONTAL, true)
-//            adapter = CardAdapter(articleList2, homeFragment)
-//        }
-        populateProducts()
-
-//        val homeFragment = this
-//        binding.recyclerViewWhatIsUp.apply {
-//            layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
-//            adapter = CardAdapter(articleList, homeFragment)
-//        }
-//        val homeFragment = this
-//        binding.recyclerViewWhatIsUp.apply {
-//            layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
-//            adapter = CardAdapter(articleList, homeFragment)
-//        }
-
-
-//        executeCall()
         return root
 
     }
@@ -115,15 +77,26 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    override fun onClick(article: Product) {
-//        val intent = Intent(this@HomeFragment.context, DetailActivity::class.java)
-//        intent.putExtra(PRODUCT_ID_EXTRA, article.id)
-//        startActivity(intent)
-//    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun displayProducts() {
+        binding.recyclerViewWhatIsUp.apply {
+            layoutManager = GridLayoutManager(this@HomeFragment.context, 2)
+            adapter = ProductsAdapter(productList)
+        }
+        binding.recyclerViewPopularArticle.apply {
+
+            layoutManager =
+                LinearLayoutManager(
+                    this@HomeFragment.context,
+                    LinearLayoutManager.HORIZONTAL,
+                    true
+                )
+            adapter = ProductsAdapter(productList)
+        }
     }
 
     private fun populateProducts() {
@@ -137,12 +110,22 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     productList = response.body()!!.toMutableList()
                     Log.d("Response", "product size : ${productList.size}")
-                    val homeFragment = this
 
                     binding.recyclerViewWhatIsUp.apply {
                         setHasFixedSize(true)
-                        layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
-                        adapter = ProductsAdapter()
+                        layoutManager = GridLayoutManager(this@HomeFragment.context, 2)
+                        adapter = ProductsAdapter(productList)
+
+                    }
+                    binding.recyclerViewPopularArticle.apply {
+
+                        layoutManager =
+                            LinearLayoutManager(
+                                this@HomeFragment.context,
+                                LinearLayoutManager.HORIZONTAL,
+                                true
+                            )
+                        adapter = ProductsAdapter(productList)
                     }
                 } else {
                     Toast.makeText(

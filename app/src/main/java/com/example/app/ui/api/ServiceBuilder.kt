@@ -1,11 +1,11 @@
-package com.example.app.ui.data
+package com.example.app.ui.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
-    private const val URL ="https://furniture-kings.herokuapp.com/"
+    private const val URL ="https://furniturekings-app.herokuapp.com/"
     //CREATE HTTP CLIENT
     private val okHttp = OkHttpClient.Builder()
 

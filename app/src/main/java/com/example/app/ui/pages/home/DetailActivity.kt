@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import app.databinding.ActivityDetailBinding
-import com.example.app.ui.data.models.PRODUCT_ID_EXTRA
-import com.example.app.ui.data.models.Product
-import com.example.app.ui.data.models.productList
+import com.example.app.ui.api.models.PRODUCT_ID_EXTRA
+import com.example.app.ui.api.models.Product
+import com.squareup.picasso.Picasso
 
 class DetailActivity : AppCompatActivity()
 {
@@ -19,28 +19,16 @@ class DetailActivity : AppCompatActivity()
         setContentView(binding.root)
 
         val product: Product? = intent.getSerializableExtra(PRODUCT_ID_EXTRA) as Product?
-//        val productID = intent.getStringExtra(PRODUCT_ID_EXTRA)
-        Log.d("TEST", "product: ${product}")
-//        val product = productID?.let { productFromID(it) }
         if(product != null)
         {
-//            binding.imgProduct.setImageResource(product.imgProduct)
+            Picasso.get().load(product.srcImg).into(binding.imgProduct);
             binding.tvTitle.text = product.name
             binding.tvDescription.text = product.description
-            val price ="${product.price} €"
-            binding.tvPrice.text = price
+            binding.tvRatingbar.text = product.stars.toString()+ "/5"
+            binding.button.text = " ${binding.button.text} ${product.price} €"
         }
 
     }
 
-    private fun productFromID(productID: String): Product?
-    {
-        for(product in productList)
-        {
-            if(product.id.toString() == productID) {
-                return product
-            }
-        }
-        return null
-    }
+
 }
