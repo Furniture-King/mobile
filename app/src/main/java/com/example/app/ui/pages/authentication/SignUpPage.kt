@@ -72,7 +72,7 @@ class SignUpPage : AppCompatActivity() {
             finish()
         } else {
             Toast.makeText(
-                this@SignUpPage.applicationContext,
+                applicationContext,
                 "Mot de passe ou email invalide !",
                 Toast.LENGTH_SHORT
             ).show()
@@ -86,7 +86,7 @@ class SignUpPage : AppCompatActivity() {
     private fun saveNewUser() {
         //initiate the service
         val destinationService = ServiceBuilder.buildService(ApiService::class.java)
-        val client: Client = Client(
+        val client = Client(
             null,
             null,
             emailAddress.text.toString(),
@@ -99,19 +99,21 @@ class SignUpPage : AppCompatActivity() {
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
         )
 
-        val test = destinationService.signUp(client).enqueue(object : Callback<Client> {
+        destinationService.signUp(client).enqueue(object : Callback<Client> {
             override fun onResponse(call: Call<Client>, response: Response<Client>) {
                 Log.d("Response", "onResponse: ${response.body()}")
                 if (response.isSuccessful) {
                     val client = response.body()!!
                     Log.d("CLIENT", "client : ${client}")
-                    val homeFragment = this
                 } else {
                     Toast.makeText(
-                        this@SignUpPage.applicationContext,
+                        applicationContext,
                         "Something went wrong ${response.message()}",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -120,15 +122,13 @@ class SignUpPage : AppCompatActivity() {
 
             override fun onFailure(call: Call<Client>, t: Throwable) {
                 Toast.makeText(
-                    this@SignUpPage.applicationContext,
+                    applicationContext,
                     "Something went wrong $t",
                     Toast.LENGTH_SHORT
-                )
-                    .show()
+                ).show()
 
             }
         })
-        Log.d("test",test.toString()+"")
     }
 
 }

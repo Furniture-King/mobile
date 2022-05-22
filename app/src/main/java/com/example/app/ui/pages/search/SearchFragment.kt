@@ -2,7 +2,6 @@ package com.example.app.ui.pages.search
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import app.databinding.FragmentSearchBinding
 import com.example.app.ui.api.models.CATEGORY_ID_EXTRA
-import com.example.app.ui.api.models.Product
 import com.example.app.ui.api.models.productList
 
 class SearchFragment : Fragment() {
@@ -63,7 +61,7 @@ class SearchFragment : Fragment() {
         })
 
         binding.listView.setOnItemClickListener { parent, view, position, id ->
-            val intentValue = Intent(this@SearchFragment.context, ResultSearchCategoryActivity::class.java)
+            val intentValue = Intent(context, ResultSearchActivity::class.java)
             intentValue.putExtra(CATEGORY_ID_EXTRA, valueAdapter.getItem(position).toString())
             startActivity(intentValue)
         }

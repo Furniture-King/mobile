@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        tools:context="com.example.app.ui.pages.home.HomeFragment">
+        tools:context="com.example.app.ui.pages.search.ResultSearchActivity">
 
 
     <fragment
@@ -19,6 +19,30 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvSearchResultTitle" />
+
+    <fragment
+            android:name="com.example.app.ui.OtherFragment.ButtonDropDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back"
+            android:id="@+id/imgDrop"
+            app:layout_constraintTop_toTopOf="@+id/tvSearchResultCategory"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSearchResultCategory"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" />
+
+    <fragment
+            android:name="com.example.app.ui.OtherFragment.RefinerProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/refinerProduct"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgDrop"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"/>
 
     <TextView
             android:id="@+id/tvSearchResultTitle"
@@ -35,14 +59,13 @@
     <TextView
             android:id="@+id/tvSearchResultCategory"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
             android:text="@string/searchResultCategory"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSearchResultTitle"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvSearchResultTitle" />
+            app:layout_constraintStart_toStartOf="@+id/imgBack" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSearchResult"
@@ -52,10 +75,10 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="50dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvSearchResultCategory"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/refinerProduct" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

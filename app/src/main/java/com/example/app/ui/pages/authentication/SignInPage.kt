@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import app.R
 import com.example.app.ui.api.ServiceBuilder
 import com.example.app.ui.api.models.Client
-import com.example.app.ui.api.models.clientTest
+import com.example.app.ui.api.models.user
 import com.example.app.ui.api.ApiService
 import com.example.app.ui.MainActivity
 import retrofit2.Call
@@ -37,141 +37,99 @@ class SignInPage : AppCompatActivity() {
 
         val tvInscription = findViewById<TextView>(R.id.tvInscription)
         tvInscription.setOnClickListener {
-            val intent = Intent(this.applicationContext, SignUpPage::class.java)
+            val intent = Intent(this, SignUpPage::class.java)
             startActivity(intent)
         }
-        val connexionButton = findViewById<Button>(R.id.connexionButton)
-        connexionButton.setOnClickListener {
-            auth()
+        val btnConnexion = findViewById<Button>(R.id.btnConnexion)
+        btnConnexion.setOnClickListener {
+            signIn()
         }
-//        signIn()
+
     }
 
-    private fun auth() {
-//        client = Client( null,"Justin", emailAddress.toString(),null,null,null)
-//        Log.d("client", "${client}")
-//        Log.d("client?.name", "${client?.name}")
+    /**
+     * Verify if the email is correct
+     *
+     * @return : boolean
+     */
+    private fun verifyEmailPassword(): Boolean {
+        return isEmailValid(emailAddress)
+    }
 
-
-        if (!isEmailValid(emailAddress)) {
-            // TODO Authentification depuis l'API du bro !
-
-            getClient()
-//            getAllClient()
-            if (true) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-
-                Toast.makeText(
-                    applicationContext, "Bienvenue King",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                Toast.makeText(
-                    applicationContext, "Something went wrong King",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-
+    /**
+     * Allow to create a new user
+     */
+    private fun signIn() {
+        if (verifyEmailPassword()) {
+            LogIn()
+//            finish()
         } else {
             Toast.makeText(
-                applicationContext, "Invalid email address",
+                applicationContext,
+                "Mot de passe ou email invalide !",
                 Toast.LENGTH_SHORT
             ).show()
             clearEditText(arrayOf(emailAddress, password))
         }
     }
 
-//    private fun getAllClient() {
-//        //initiate the service
-//        val destinationService = ServiceBuilder.buildService(ApiService::class.java)
-//        val requestCall = destinationService.getClientList()
-//        //make network call asynchronously
-//        requestCall.enqueue(object : Callback<List<Client>> {
-//            override fun onResponse(call: Call<List<Client>>, response: Response<List<Client>>) {
-//                Log.d("allClients", "onResponse: ${response.body()}")
-//                if (response.isSuccessful) {
-//                    val allClients = response.body()!!.toMutableList()
-//                    Log.d("allClients", "allClients size : ${allClients.size}")
-//
-//                } else {
-//                    Toast.makeText(
-//                        this@SignInPage.applicationContext,
-//                        "Something went wrong ${response.message()}",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    Log.d("allClients", "Something went wrong : ${response.message()}")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Client>>, t: Throwable) {
-//                Toast.makeText(
-//                    this@SignInPage.applicationContext,
-//                    "Something went wrong $t",
-//                    Toast.LENGTH_SHORT
-//                )
-//                    .show()
-//                Log.d("allClients", "Something went wrong : $t")
-//
-//            }
-//        })
-//    }
-
-
-//    fun signIn() {
-//        val inscription = findViewById<TextView>(R.id.tvInscription)
-//        inscription.setOnClickListener {
-//            val intent = Intent(this, SignUpPage::class.java)
-//            startActivity(intent)
-//        }
-//    }
-
-    fun getClient() {
+    /**
+     * Allow to register a new user
+     */
+    private fun LogIn() {
         //initiate the service
         val destinationService = ServiceBuilder.buildService(ApiService::class.java)
-        val requestCall = destinationService.signIn(clientTest)
-        //make network call asynchronously
-        requestCall.enqueue(object : Callback<Client> {
+
+
+        val client = Client(
+            null,
+            null,
+            emailAddress.text.toString(),
+            password.text.toString(),
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
+        Log.d("LOGIN emailAddress", "${emailAddress.text}")
+        Log.d("LOGIN password", "${password.text}")
+
+        destinationService.signIn(client).enqueue(object : Callback<Client> {
             override fun onResponse(call: Call<Client>, response: Response<Client>) {
-                Log.d("client", "onResponse: ${response.body()}")
+                Log.d("LOGIN RESPONSE", "${response.body()}")
                 if (response.isSuccessful) {
-                    val client = response.body()!!
-                    Log.d("client", "allClients size : ${client}")
+                    val client = response.body()
+                    Log.d("CLIENT", "client : ${client}")
+                    user = client
+                    finish()
                 } else {
                     Toast.makeText(
-                        this@SignInPage.applicationContext,
+                        applicationContext,
                         "Something went wrong ${response.message()}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    Log.d("client", "Something went wrong : ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<Client>, t: Throwable) {
                 Toast.makeText(
-                    this@SignInPage.applicationContext,
+                    applicationContext,
                     "Something went wrong $t",
                     Toast.LENGTH_SHORT
-                )
-                    .show()
-                Log.d("client", "Something went wrong : $t")
+                ).show()
+                Log.d("LOGIN password", "$t")
 
             }
         })
+//        Log.d("test",test.toString()+"")
     }
-//    fun isEmailValid(): Boolean {
-//        if (!EMAIL_REGEX.toRegex().matches(emailAddress.text)) {
-//            Toast.makeText(
-//                applicationContext, "Invalid email address",
-//                Toast.LENGTH_SHORT
-//            ).show()
-//            return false
-//        }
-//        Toast.makeText(
-//            applicationContext, "Bienvenue King",
-//            Toast.LENGTH_SHORT
-//        ).show()
-//        return true
-//    }
+
 }

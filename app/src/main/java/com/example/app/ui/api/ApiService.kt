@@ -3,7 +3,9 @@ package com.example.app.ui.api
 import com.example.app.ui.api.models.Client
 import com.example.app.ui.api.models.Product
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
+import java.util.*
 
 interface ApiService {
 

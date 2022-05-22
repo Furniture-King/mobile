@@ -88,6 +88,7 @@
             android:id="@+id/recyclerViewWhatIsUp"
             android:layout_width="match_parent"
             android:scrollbars="none"
+            app:flow_maxElementsWrap="4"
             android:fillViewport="true"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/whatIsUp"

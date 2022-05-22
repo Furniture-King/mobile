@@ -111,11 +111,8 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
         // Manage the toggle event on heart's article click
         fun showHide(imgViews: Array<ImageView>) {
             for (view in imgViews)
-                view.visibility = if (view.visibility == View.VISIBLE) {
-                    View.INVISIBLE
-                } else {
-                    View.VISIBLE
-                }
+                view.visibility = if(view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
+
         }
 
     }

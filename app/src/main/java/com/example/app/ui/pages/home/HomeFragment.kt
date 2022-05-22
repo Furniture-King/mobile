@@ -1,5 +1,6 @@
 package com.example.app.ui.pages.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,7 @@ import app.databinding.FragmentHomeBinding
 import com.example.app.ui.api.ServiceBuilder
 import com.example.app.ui.api.adaptaters.ProductsAdapter
 import com.example.app.ui.api.models.Product
-import com.example.app.ui.api.models.client
+import com.example.app.ui.api.models.user
 import com.example.app.ui.api.ApiService
 import com.example.app.ui.api.models.productList
 import com.example.app.ui.pages.authentication.SignInPage
@@ -57,23 +58,25 @@ class HomeFragment : Fragment() {
 
     }
 
+    @SuppressLint("LongLogTag")
     private fun isLogged() {
         val tvConnexion: TextView = binding.tvConnection
 //        Log.d("client", "${client}")
 //        Log.d("client?.equals(null)", "${client?.equals(null)}")
 //        Log.d("client == null", "${client?.equals(null) == null}")
+        Log.d("(user?.equals(null) == true).toString()",(user?.equals(null) == true).toString())
+        Log.d("user?.equals(null)", ""+user?.equals(null))
+        Log.d("user",user.toString())
+        if (user == null) {
+            tvConnexion.setOnClickListener {
+                val intent = Intent(context, SignInPage::class.java)
+                startActivity(intent)
+            }
+            tvConnexion.text = "Connexion"
 
-        if (client?.equals(null) == null) {
-            tvConnexion.setOnClickListener {
-                val intent = Intent(this.context, SignInPage::class.java)
-                startActivity(intent)
-            }
         } else {
-            tvConnexion.text = "Hi, " + client?.lastName + "!"
-            tvConnexion.setOnClickListener {
-                val intent = Intent(this.context, SettingsFragment::class.java)
-                startActivity(intent)
-            }
+            tvConnexion.text = "Hi, " + user?.lastName + "!"
+
         }
     }
 
@@ -84,14 +87,14 @@ class HomeFragment : Fragment() {
 
     private fun displayProducts() {
         binding.recyclerViewWhatIsUp.apply {
-            layoutManager = GridLayoutManager(this@HomeFragment.context, 2)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = ProductsAdapter(productList)
         }
         binding.recyclerViewPopularArticle.apply {
 
             layoutManager =
                 LinearLayoutManager(
-                    this@HomeFragment.context,
+                    context,
                     LinearLayoutManager.HORIZONTAL,
                     true
                 )
@@ -113,7 +116,7 @@ class HomeFragment : Fragment() {
 
                     binding.recyclerViewWhatIsUp.apply {
                         setHasFixedSize(true)
-                        layoutManager = GridLayoutManager(this@HomeFragment.context, 2)
+                        layoutManager = GridLayoutManager(context, 2)
                         adapter = ProductsAdapter(productList)
 
                     }
@@ -121,7 +124,7 @@ class HomeFragment : Fragment() {
 
                         layoutManager =
                             LinearLayoutManager(
-                                this@HomeFragment.context,
+                                context,
                                 LinearLayoutManager.HORIZONTAL,
                                 true
                             )
@@ -129,7 +132,7 @@ class HomeFragment : Fragment() {
                     }
                 } else {
                     Toast.makeText(
-                        this@HomeFragment.context,
+                       context,
                         "Something went wrong ${response.message()}",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -139,7 +142,7 @@ class HomeFragment : Fragment() {
 
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                 Toast.makeText(
-                    this@HomeFragment.context,
+                    context,
                     "Something went wrong $t",
                     Toast.LENGTH_SHORT
                 )

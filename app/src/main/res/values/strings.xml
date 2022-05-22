@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">FournitureKing</string>
-    <string name="titleHome">Home</string>
-    <string name="titleHistory">History</string>
-    <string name="titleBasket">Shopping Cart</string>
-    <string name="titleSettings">Setting</string>
+    <string name="titleHome">Accueil</string>
+    <string name="titleHistory">Historique</string>
+    <string name="titleBasket">Panier</string>
+    <string name="titleSettings">Paramètres</string>
     <string name="email">Email</string>
     <string name="signIn">Connexion</string>
     <string name="connect">Connecte toi !</string>
@@ -34,4 +34,55 @@
     <string name="expiryDate">MM/AA</string>
     <string name="cardNumber">0123 4657 8901 2345</string>
     <string name="securityCode">123</string>
+
+    <string name="colors">COULEURS</string>
+    <string name="bleu">Bleu</string>
+    <string name="red">Rouge</string>
+    <string name="black">Noir</string>
+    <string name="white">Blanc</string>
+    <string name="orange">Orange</string>
+    <string name="purpul">Violet</string>
+    <string name="brown">Marron</string>
+    <string name="green">Vert</string>
+    <string name="grey">Gris</string>
+    <string name="yellow">Jaune</string>
+
+    <string-array name="colorsList">
+        <item>Bleu</item>
+        <item>Rouge</item>
+        <item>Noir</item>
+        <item>Blanc</item>
+        <item>Orange</item>
+        <item>Violet</item>
+        <item>Marron</item>
+        <item>Vert</item>
+        <item>Gris</item>
+        <item>Jaune</item>
+    </string-array>
+
+    <string name="sortBy">TRIER PAR</string>
+    <string name="increasingPrice">Prix croissant</string>
+    <string name="decreasingPrice">Prix décroissant</string>
+    <string name="popular">Populaire</string>
+    <string name="alphabetic">Alphabétique</string>
+
+    <string-array name="typeSortList">
+        <item>Prix croissant</item>
+        <item>Prix décroissant</item>
+        <item>Note client</item>
+        <item>Alphabétique</item>
+    </string-array>
+
+    <string name="deliveryTimes">DÉLAIS DE LIVRAISON</string>
+    <string name="quickSupply">Livraison rapide</string>
+    <string name="fourWeeks">(4 semaines)</string>
+    <string name="standardSupply">Livraison standart</string>
+    <string name="eightWeeks">(8 semaines)</string>
+    <string name="titleBookmark">Favoris</string>
+
+    <string-array name="deliveryList">
+        <item>Livraison rapide</item>
+        <item>Livraison standart</item>
+    </string-array>
+
 </resources>

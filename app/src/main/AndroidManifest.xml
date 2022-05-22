@@ -25,14 +25,13 @@
         </activity>
         <activity android:name="com.example.app.ui.pages.authentication.SignUpPage" />
         <activity android:name="com.example.app.ui.pages.authentication.SignInPage" />
-        <activity android:name="com.example.app.ui.pages.search.HomeActivitySearch" />
         <activity android:name="com.example.app.ui.pages.home.DetailActivity" />
         <activity android:name="com.example.app.ui.pages.settings.ProfilActivity" />
         <activity android:name="com.example.app.ui.pages.settings.AboutUsActivity" />
         <activity android:name="com.example.app.ui.pages.settings.AddCreditCardActivity" />
         <activity android:name="com.example.app.ui.pages.settings.PaymentActivity" />
         <activity android:name="com.example.app.ui.pages.settings.CountriesActivity" />
-        <activity android:name="com.example.app.ui.pages.search.ResultSearchCategoryActivity" />
+        <activity android:name="com.example.app.ui.pages.search.ResultSearchActivity" />
 
         <meta-data
                 android:name="preloaded_fonts"

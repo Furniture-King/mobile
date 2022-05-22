@@ -17,10 +17,6 @@ object ServiceBuilder {
     //create retrofit Instance
     private val retrofit = builder.build()
 
-    //we will use this class to create an anonymous inner class function that
-    //implements Country service Interface
-
-
     fun <T> buildService (serviceType :Class<T>):T{
         return retrofit.create(serviceType)
     }

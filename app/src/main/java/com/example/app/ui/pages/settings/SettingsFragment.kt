@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import app.databinding.FragmentSettingsBinding
-import com.example.app.ui.api.models.client
+import com.example.app.ui.api.models.user
 import com.example.app.ui.MainActivity
 
 
@@ -32,25 +32,25 @@ class SettingsFragment : Fragment() {
 
         val userProfil: TextView = binding.tvUserProfil
         userProfil.setOnClickListener {
-            val intent = Intent(this.context, ProfilActivity::class.java)
+            val intent = Intent(context, ProfilActivity::class.java)
             startActivity(intent)
         }
         val tvAbout: TextView = binding.tvAbout
         tvAbout.setOnClickListener {
-            val intent = Intent(this.context, AboutUsActivity::class.java)
+            val intent = Intent(context, AboutUsActivity::class.java)
             startActivity(intent)
         }
 
         val tvPayment: TextView = binding.tvPayment
         tvPayment.setOnClickListener {
-            val intent = Intent(this.context, PaymentActivity::class.java)
+            val intent = Intent(context, PaymentActivity::class.java)
             startActivity(intent)
         }
 
         val logout: Button = binding.logout
         logout.setOnClickListener {
             logout()
-            val intent = Intent(this.context, MainActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
         }
         return root
@@ -62,7 +62,7 @@ class SettingsFragment : Fragment() {
     }
 
     fun logout() {
-        client = null
+        user = null
     }
 }
 
