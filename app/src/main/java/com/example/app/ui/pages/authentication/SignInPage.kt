@@ -62,7 +62,6 @@ class SignInPage : AppCompatActivity() {
     private fun signIn() {
         if (verifyEmailPassword()) {
             LogIn()
-//            finish()
         } else {
             Toast.makeText(
                 applicationContext,
@@ -79,8 +78,6 @@ class SignInPage : AppCompatActivity() {
     private fun LogIn() {
         //initiate the service
         val destinationService = ServiceBuilder.buildService(ApiService::class.java)
-
-
         val client = Client(
             null,
             null,
@@ -110,6 +107,7 @@ class SignInPage : AppCompatActivity() {
                     Log.d("CLIENT", "client : ${client}")
                     user = client
                     finish()
+                    startActivity(Intent(applicationContext, MainActivity::class.java));
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -129,7 +127,6 @@ class SignInPage : AppCompatActivity() {
 
             }
         })
-//        Log.d("test",test.toString()+"")
     }
 
 }

@@ -23,16 +23,17 @@ class ButtonDropDown : Fragment(R.layout.fragment_button_drop_down) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val imgBack = view.findViewById(R.id.imgDropDown) as ImageView
-        imgBack.setOnClickListener {
+        val imgDropDown = view.findViewById(R.id.imgDropDown) as ImageView
+        imgDropDown.setOnClickListener {
             val refinerProduct =
                 activity?.findViewById(R.id.refinerProduct) as View
             val imgDropDown = activity?.findViewById(R.id.imgDropDown) as View
 
 
-            imgBack.rotation = if (imgBack.rotation == 90F) 270F else 90F
+            imgDropDown.rotation = if (imgDropDown.rotation == 90F) 270F else 90F
             refinerProduct.visibility =
                 if (imgDropDown.rotation == 90F) View.GONE else View.VISIBLE
         }
+
     }
 }

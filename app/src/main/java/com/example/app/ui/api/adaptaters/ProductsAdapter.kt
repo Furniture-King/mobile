@@ -2,7 +2,6 @@ package com.example.app.ui.api.adaptaters
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import app.R
 import com.example.app.ui.api.models.PRODUCT_ID_EXTRA
 import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.models.listProductFavourite
 import com.example.app.ui.api.models.listProductShoppingCart
 import com.example.app.ui.pages.home.DetailActivity
 import com.squareup.picasso.Picasso
-import java.util.ArrayList
 
 
 /**
@@ -35,9 +34,9 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_cell, parent, false)
 
-        if (parent.id === R.id.recyclerViewBasket || parent.id === R.id.recyclerViewPopularArticle) {
-            Log.d("parentId", parent.id.toString())
-            Log.d("R.id.recyclerViewPopularArticle", R.id.recyclerViewPopularArticle.toString())
+        if (parent.id === R.id.recyclerViewBookmark || parent.id === R.id.recyclerViewShoppingCart || parent.id === R.id.recyclerViewPopularArticle) {
+//            Log.d("parentId", parent.id.toString())
+//            Log.d("R.id.recyclerViewPopularArticle", R.id.recyclerViewPopularArticle.toString())
 
             parentId = parent.id
         }
@@ -66,6 +65,9 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
         var imgProduct = itemView.findViewById<ImageView>(R.id.imgProduct)
         var imgBlackBorderHeart = itemView.findViewById<ImageView>(R.id.imgBlackBorderHeart)
         var imgRedHeart = itemView.findViewById<ImageView>(R.id.imgRedHeart)
+        var imgShoppingCart = itemView.findViewById<ImageView>(R.id.imgCart)
+        var imgShoppingCartFill = itemView.findViewById<ImageView>(R.id.imgCartFill)
+
         var tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
         var tvPrice = itemView.findViewById<TextView>(R.id.tvPrice)
         var tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
@@ -88,18 +90,32 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
             val imgHeart = arrayOf(imgBlackBorderHeart, imgRedHeart)
             imgBlackBorderHeart.setOnClickListener {
                 showHide(imgHeart)
-                listProductShoppingCart.add(product)
+                listProductFavourite.add(product)
             }
             imgRedHeart.setOnClickListener {
                 showHide(imgHeart)
+                listProductFavourite.remove(product)
+            }
+
+            val imgCart = arrayOf(imgShoppingCart, imgShoppingCartFill)
+            imgShoppingCart.setOnClickListener {
+                showHide(imgCart)
+                listProductShoppingCart.add(product)
+            }
+            imgShoppingCartFill.setOnClickListener {
+                showHide(imgCart)
                 listProductShoppingCart.remove(product)
             }
-            if (product in listProductShoppingCart) {
-                showHide(imgHeart)
 
+
+            if (product in listProductFavourite) {
+                showHide(imgHeart)
+            }
+            if (product in listProductShoppingCart) {
+                showHide(imgCart)
             }
 
-            if (parentId === R.id.recyclerViewBasket)
+            if (parentId === R.id.recyclerViewShoppingCart  || parentId === R.id.recyclerViewBookmark)
                 cardView.layoutParams.width = WRAP_CONTENT
             if (parentId === R.id.recyclerViewPopularArticle) {
                 cardView.layoutParams.width = 500
@@ -112,7 +128,6 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
         fun showHide(imgViews: Array<ImageView>) {
             for (view in imgViews)
                 view.visibility = if(view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
-
         }
 
     }

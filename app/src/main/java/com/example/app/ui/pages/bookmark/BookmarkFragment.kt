@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import app.databinding.FragmentBookmarkBinding
 import com.example.app.ui.api.adaptaters.ProductsAdapter
-import com.example.app.ui.api.models.listProductShoppingCart
+import com.example.app.ui.api.models.listProductFavourite
 
 class BookmarkFragment : Fragment() {
     private var _binding: FragmentBookmarkBinding? = null
@@ -26,9 +26,9 @@ class BookmarkFragment : Fragment() {
         _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.recyclerViewBasket.apply {
+        binding.recyclerViewBookmark.apply {
             layoutManager = GridLayoutManager(context,2)
-            adapter= ProductsAdapter(listProductShoppingCart)
+            adapter= ProductsAdapter(listProductFavourite)
         }
 
         return root

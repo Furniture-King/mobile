@@ -9,22 +9,28 @@ import java.util.*
 
 interface ApiService {
 
-    // CONNECTION
+
+    // INSCRIPTION
     @Headers("Content-Type: application/json")
     @POST("clients/sign-up")
     fun signUp(@Body client: Client): Call<Client>
 
+    // CONNEXION
     @Headers("Content-Type: application/json")
     @POST("clients/sign-in")
     fun signIn(@Body client: Client): Call<Client>
 
-    // GET ALL PRODUCTS
+    // OBTENIR TOUS LES PRODUITS
     @GET("products")
     fun getProductList(): Call<List<Product>>
 
-    // GET ALL CLIENTS
+    // OBTENIR TOUS LES CLIENTS
     @GET("clients")
     fun getClientList(): Call<List<Client>>
+
+    // MODIFIER UN CLIENT
+    @PUT("clients/put/{clientId}")
+    fun updateProfile(@Path("clientId") @Body user: Client?): Call<Client>
 
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num: Int): Response<Post>

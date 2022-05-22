@@ -30,7 +30,7 @@
     <string name="firstName">Prénom</string>
     <string name="phone">Mobile</string>
     <string name="lastName">Nom</string>
-    <string name="physicalAddress">Adresse</string>
+    <string name="address">Adresse</string>
     <string name="expiryDate">MM/AA</string>
     <string name="cardNumber">0123 4657 8901 2345</string>
     <string name="securityCode">123</string>

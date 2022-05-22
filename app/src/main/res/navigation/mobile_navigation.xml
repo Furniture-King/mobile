@@ -19,7 +19,7 @@
 
     <fragment
             android:id="@+id/navigation_basket"
-            android:name="com.example.app.ui.pages.basket.BasketFragment"
+            android:name="com.example.app.ui.pages.shoppingCart.ShoppingCartFragment"
             android:label="@string/titleBasket"
             tools:layout="@layout/fragment_settings" />
 

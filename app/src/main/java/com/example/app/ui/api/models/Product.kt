@@ -8,11 +8,14 @@ import java.io.Serializable
  * The product list
  */
 var productList = mutableListOf<Product>()
-
 /**
- * The product shopping cart
+ * The product shopping cart list
  */
 var listProductShoppingCart = mutableListOf<Product>()
+/**
+ * The product favourite list
+ */
+var listProductFavourite = mutableListOf<Product>()
 
 /**
  * Product ID EXTRA
@@ -42,6 +45,6 @@ data class Product(
     val description: String?,
     val desc1: String?,
     val desc2: String?,
-    val createdAt: Date?,
-    val updatedAt: Date?,
+    val createdAt: Long?,
+    val updatedAt: Long?,
 ):Serializable

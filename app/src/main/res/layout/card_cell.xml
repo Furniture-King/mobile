@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.502" />
+                    app:layout_constraintHorizontal_bias="0.5" />
 
             <ImageView
                     android:layout_width="35dp"
@@ -55,6 +56,27 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:clickable="true"
+                    android:visibility="gone" />
+
+            <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:srcCompat="@drawable/ic_basket"
+                    android:id="@+id/imgCart"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imgBlackBorderHeart"
+                    app:layout_constraintStart_toStartOf="@+id/imgBlackBorderHeart"
+                    app:layout_constraintEnd_toEndOf="@+id/imgBlackBorderHeart" />
+
+            <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:srcCompat="@drawable/ic_shopping_cart_solid"
+                    android:id="@+id/imgCartFill"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imgBlackBorderHeart"
+                    app:layout_constraintStart_toStartOf="@+id/imgBlackBorderHeart"
+                    app:layout_constraintEnd_toEndOf="@+id/imgBlackBorderHeart"
                     android:visibility="gone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

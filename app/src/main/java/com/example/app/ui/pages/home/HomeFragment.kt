@@ -64,10 +64,10 @@ class HomeFragment : Fragment() {
 //        Log.d("client", "${client}")
 //        Log.d("client?.equals(null)", "${client?.equals(null)}")
 //        Log.d("client == null", "${client?.equals(null) == null}")
-        Log.d("(user?.equals(null) == true).toString()",(user?.equals(null) == true).toString())
-        Log.d("user?.equals(null)", ""+user?.equals(null))
+        Log.d("(user?.id == null)",(user?.id == null).toString())
+        Log.d("user?.id", ""+user?.id)
         Log.d("user",user.toString())
-        if (user == null) {
+        if (user?.id == null) {
             tvConnexion.setOnClickListener {
                 val intent = Intent(context, SignInPage::class.java)
                 startActivity(intent)
@@ -75,7 +75,8 @@ class HomeFragment : Fragment() {
             tvConnexion.text = "Connexion"
 
         } else {
-            tvConnexion.text = "Hi, " + user?.lastName + "!"
+            tvConnexion.text = "Hi King !"
+            if (user?.lastName != null) tvConnexion.text = "Hi, " + user?.lastName + "!"
 
         }
     }
