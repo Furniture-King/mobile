@@ -122,7 +122,6 @@ class HomeFragment : Fragment() {
 
                     }
                     binding.recyclerViewPopularArticle.apply {
-
                         layoutManager =
                             LinearLayoutManager(
                                 context,

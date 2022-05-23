@@ -28,13 +28,18 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
 
     var listProduct = listProduct
     var parentId: Int = 0
+    val recyclerViews = arrayListOf(
+        R.id.recyclerViewProductDetail,
+        R.id.recyclerViewBookmark,
+        R.id.recyclerViewShoppingCart,
+        R.id.recyclerViewPopularArticle
+    )
 
-    @SuppressLint("LongLogTag")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_cell, parent, false)
 
-        if (parent.id === R.id.recyclerViewBookmark || parent.id === R.id.recyclerViewShoppingCart || parent.id === R.id.recyclerViewPopularArticle) {
+        if (parent.id in recyclerViews) {
 //            Log.d("parentId", parent.id.toString())
 //            Log.d("R.id.recyclerViewPopularArticle", R.id.recyclerViewPopularArticle.toString())
 
@@ -115,19 +120,33 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
                 showHide(imgCart)
             }
 
-            if (parentId === R.id.recyclerViewShoppingCart  || parentId === R.id.recyclerViewBookmark)
+            if (parentId === R.id.recyclerViewShoppingCart || parentId === R.id.recyclerViewBookmark)
                 cardView.layoutParams.width = WRAP_CONTENT
-            if (parentId === R.id.recyclerViewPopularArticle) {
-                cardView.layoutParams.width = 500
-            }
+            if (parentId === R.id.recyclerViewPopularArticle || parentId === R.id.recyclerViewProductDetail) {
+                // cardView
+                cardView.layoutParams.width = 350
+                cardView.layoutParams.height = 500
 
+                // heart images
+                imgBlackBorderHeart.layoutParams.width = 30
+                imgBlackBorderHeart.layoutParams.height = 30
+                imgRedHeart.layoutParams.width = 30
+                imgRedHeart.layoutParams.height = 30
+
+                // shopping cart images
+                imgShoppingCart.layoutParams.width = 30
+                imgShoppingCart.layoutParams.height = 30
+                imgShoppingCartFill.layoutParams.width = 30
+                imgShoppingCartFill.layoutParams.height = 30
+            }
         }
 
 
         // Manage the toggle event on heart's article click
         fun showHide(imgViews: Array<ImageView>) {
             for (view in imgViews)
-                view.visibility = if(view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
+                view.visibility =
+                    if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
         }
 
     }

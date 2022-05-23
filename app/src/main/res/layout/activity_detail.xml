@@ -8,153 +8,240 @@
         android:scrollbars="vertical"
         tools:context="com.example.app.ui.pages.home.DetailActivity">
 
-    <fragment
-            android:name="com.example.app.ui.OtherFragment.ButtonBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_back"
-            android:id="@+id/imgBack"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" />
-
-    <ImageView
-            android:id="@+id/imgProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_beige_chair"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/cover"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imgBack"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:maxHeight="500dp" />
-
-    <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/titlePlaceHolder"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:lines="2"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imgProduct"
-            tools:layout_editor_absoluteX="0dp" />
-
-
-    <TextView
-            android:id="@+id/tvDescription"
-            android:layout_marginHorizontal="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/authorPlaceHolder"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-            android:layout_marginTop="16dp" />
-
-    <Button
-            android:text="Acheter maintenant pour"
+    <ScrollView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            android:id="@+id/constraintLayout2"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-                android:id="@+id/tvRatingbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tvRatingBar"
-                android:textColor="@color/darkGray"
-                android:lines="1"
-                android:fontFamily="@font/poiret_one"
-                android:textAlignment="center"
-                android:textSize="12sp"
-                app:layout_constraintVertical_bias="0.583"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/ratingBarStyleSmall"
-                android:stepSize="0.5"
-                android:numStars="5"
-                android:rating="2.5"
-                android:isIndicator="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvRatingbar"
-                app:layout_constraintHorizontal_bias="0.128"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="20dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <fragment
-            android:name="com.example.app.ui.OtherFragment.CommentFragment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/fragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/fragment2" />
-
-    <fragment
-            android:name="com.example.app.ui.OtherFragment.CommentFragment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-            android:id="@+id/fragment2"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintHorizontal_bias="1.0" />
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewProductDetail"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/scrollView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            android:layout_marginBottom="16dp" />
+            app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <fragment
+                    android:name="com.example.app.ui.OtherFragment.ButtonBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_back"
+                    android:id="@+id/imgBack"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" />
+
+            <ImageView
+                    android:id="@+id/imgProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_beige_chair"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/cover"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imgBack"
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:maxHeight="500dp" />
+
+            <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/titlePlaceHolder"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:lines="2"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imgProduct"
+                    tools:layout_editor_absoluteX="0dp" />
+
+
+            <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/authorPlaceHolder"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+                    android:layout_marginTop="16dp" />
+
+            <Button
+                    android:text="Acheter maintenant pour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnOrder"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment4" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    android:id="@+id/constraintLayout2"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                        android:id="@+id/tvRatingbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tvRatingBar"
+                        android:textColor="@color/darkGray"
+                        android:lines="1"
+                        android:fontFamily="@font/poiret_one"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        app:layout_constraintVertical_bias="0.583"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:stepSize="0.5"
+                        android:numStars="5"
+                        android:rating="2.5"
+                        android:isIndicator="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvRatingbar"
+                        app:layout_constraintHorizontal_bias="0.128"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="20dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <fragment
+                    android:name="com.example.app.ui.OtherFragment.CommentFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fragment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment2" />
+
+            <fragment
+                    android:name="com.example.app.ui.OtherFragment.CommentFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fragment3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerViewProductDetail"
+                    android:layout_marginTop="16dp" />
+
+            <fragment
+                    android:name="com.example.app.ui.OtherFragment.CommentFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fragment4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment3"
+                    android:layout_marginTop="16dp" />
+
+            <fragment
+                    android:name="com.example.app.ui.OtherFragment.CommentFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                    android:id="@+id/fragment2"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewProductDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintHorizontal_bias="0.0" />
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_basket"
+                    android:id="@+id/imgShoppingCartDetail"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/imgBlackBorderHeartDetail"
+                    app:layout_constraintStart_toStartOf="@+id/imgBlackBorderHeartDetail"
+                    app:layout_constraintEnd_toEndOf="@+id/imgBlackBorderHeartDetail" />
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_shopping_cart_solid"
+                    android:id="@+id/imgShoppingCartFillDetail"
+                    app:layout_constraintStart_toStartOf="@+id/imgShoppingCartDetail"
+                    app:layout_constraintTop_toTopOf="@+id/imgShoppingCartDetail"
+                    app:layout_constraintEnd_toEndOf="@+id/imgShoppingCartDetail" />
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_black_border_heart"
+                    android:id="@+id/imgBlackBorderHeartDetail"
+                    app:layout_constraintTop_toTopOf="@+id/imgProduct"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:srcCompat="@drawable/ic_red_heart"
+                    android:id="@+id/imgRedHeartDetail"
+                    app:layout_constraintStart_toStartOf="@+id/imgBlackBorderHeartDetail"
+                    app:layout_constraintEnd_toEndOf="@+id/imgBlackBorderHeartDetail"
+                    app:layout_constraintTop_toTopOf="@+id/imgBlackBorderHeartDetail"
+                    android:layout_marginTop="-5dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

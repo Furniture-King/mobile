@@ -7,6 +7,10 @@ import java.io.Serializable
 /**
  * The product list
  */
+var list = mutableListOf<Product>()
+/**
+ * The product list
+ */
 var productList = mutableListOf<Product>()
 /**
  * The product shopping cart list

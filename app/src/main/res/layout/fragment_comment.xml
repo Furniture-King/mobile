@@ -24,15 +24,18 @@
             android:id="@+id/tvAuthor"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imgAuthor"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp" />
 
     <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            tools:srcCompat="@tools:sample/avatars"
-            android:id="@+id/imageView"
+            tools:srcCompat="@drawable/ic_man"
+            android:id="@+id/imgAuthor"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/cover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/tvComment"
             app:layout_constraintTop_toTopOf="@+id/tvAuthor" />
