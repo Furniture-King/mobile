@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:scrollbars="vertical"
         tools:context="com.example.app.ui.pages.home.DetailActivity">
 
     <fragment
@@ -30,7 +31,8 @@
             app:layout_constraintTop_toBottomOf="@+id/imgBack"
             tools:ignore="MissingConstraints"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxHeight="500dp" />
 
     <TextView
             android:id="@+id/tvTitle"
@@ -67,11 +69,11 @@
             android:id="@+id/button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="100dp" />
+            android:layout_marginBottom="16dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -116,4 +118,43 @@
                 android:layout_marginStart="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+            android:name="com.example.app.ui.OtherFragment.CommentFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/fragment2" />
+
+    <fragment
+            android:name="com.example.app.ui.OtherFragment.CommentFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            android:id="@+id/fragment2"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewProductDetail"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            android:layout_marginBottom="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

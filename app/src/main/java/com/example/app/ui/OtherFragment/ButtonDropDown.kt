@@ -29,11 +29,9 @@ class ButtonDropDown : Fragment(R.layout.fragment_button_drop_down) {
                 activity?.findViewById(R.id.refinerProduct) as View
             val imgDropDown = activity?.findViewById(R.id.imgDropDown) as View
 
-
             imgDropDown.rotation = if (imgDropDown.rotation == 90F) 270F else 90F
             refinerProduct.visibility =
                 if (imgDropDown.rotation == 90F) View.GONE else View.VISIBLE
         }
-
     }
 }
