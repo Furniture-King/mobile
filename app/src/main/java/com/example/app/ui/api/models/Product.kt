@@ -45,7 +45,7 @@ data class Product(
     val stars: Float?,
     val width: Float?,
     val length: Float?,
-    val price: Float?,
+    val price: Int?,
     val description: String?,
     val desc1: String?,
     val desc2: String?,
