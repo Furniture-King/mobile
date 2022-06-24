@@ -1,25 +1,7 @@
 package com.example.app.ui.api.models
 
-import java.util.*
-import org.bson.types.ObjectId
 import java.io.Serializable
-
-/**
- * The product list
- */
-var list = mutableListOf<Product>()
-/**
- * The product list
- */
-var productList = mutableListOf<Product>()
-/**
- * The product shopping cart list
- */
-var listProductShoppingCart = mutableListOf<Product>()
-/**
- * The product favourite list
- */
-var listProductFavourite = mutableListOf<Product>()
+import kotlin.collections.ArrayList
 
 /**
  * Product ID EXTRA
@@ -31,24 +13,43 @@ val PRODUCT_ID_EXTRA = "productExtra"
  */
 val CATEGORY_ID_EXTRA = "categoryProductExtra"
 
+/**
+ * The product list
+ */
+var LIST_ALL_PRODUCT = mutableListOf<Product>()
+
+/**
+ * The product shopping cart list
+ */
+var LIST_PRODUCT_SHOPPING_CART = mutableListOf<Product>()
+
+/**
+ * The product favourite list
+ */
+var LIST_PRODUCT_FAVOURITE = mutableListOf<Product>()
+
+/**
+ * Total price UwU
+ */
+var TOTAL_PRICE_SHOPPING_CART: Float = 0f
 
 /**
  * Meaning of a article
  */
 data class Product(
-    var id: ObjectId,
-    var categoryName: String?,
+    val id: String?,
+    val categoryName: String?,
     val name: String?,
     val color: String?,
-    val srcImg: String?,
+    val srcImg: ArrayList<String?>,
     val stock: Int?,
     val stars: Float?,
     val width: Float?,
     val length: Float?,
-    val price: Int?,
+    val price: Float?,
     val description: String?,
     val desc1: String?,
     val desc2: String?,
     val createdAt: Long?,
     val updatedAt: Long?,
-):Serializable
+) : Serializable

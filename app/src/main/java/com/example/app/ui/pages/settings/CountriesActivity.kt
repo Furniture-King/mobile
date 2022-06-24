@@ -31,9 +31,7 @@ class CountriesActivity : AppCompatActivity() {
         binding.lvPays.adapter = arrayAdapter
         binding.lvPays.setOnItemClickListener { parent, view, position, id ->
             val element = arrayAdapter.getItem(position) // The item that was clicked
-            val intent = Intent(this, AddCreditCardActivity::class.java)
-            intent.putExtra("countrySelected", element)
-            startActivity(intent)
+            startActivity(Intent(this, AddCreditCardActivity::class.java).putExtra("countrySelected", element))
             finish()
         }
     }

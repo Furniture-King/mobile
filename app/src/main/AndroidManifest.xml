@@ -14,7 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
         <activity
-                android:name="com.example.app.ui.MainActivity"
+                android:name="com.example.app.ui.pages.authentication.SignInActivity"
                 android:exported="true"
                 android:label="@string/app_name">
             <intent-filter>
@@ -23,15 +23,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.app.ui.pages.authentication.SignUpPage" />
-        <activity android:name="com.example.app.ui.pages.authentication.SignInPage" />
+        <activity android:name="com.example.app.ui.MainActivity" />
+
+        <activity android:name="com.example.app.ui.pages.authentication.SignUpActivity" />
+
         <activity android:name="com.example.app.ui.pages.home.DetailActivity" />
+
         <activity android:name="com.example.app.ui.pages.settings.ProfilActivity" />
         <activity android:name="com.example.app.ui.pages.settings.AboutUsActivity" />
         <activity android:name="com.example.app.ui.pages.settings.AddCreditCardActivity" />
         <activity android:name="com.example.app.ui.pages.settings.PaymentActivity" />
         <activity android:name="com.example.app.ui.pages.settings.CountriesActivity" />
+
         <activity android:name="com.example.app.ui.pages.search.ResultSearchActivity" />
+
+        <activity android:name="com.example.app.ui.pages.shoppingCart.RecapShoppingCartActivity" />
 
         <meta-data
                 android:name="preloaded_fonts"

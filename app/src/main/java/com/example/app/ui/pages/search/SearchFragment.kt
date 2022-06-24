@@ -10,7 +10,7 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import app.databinding.FragmentSearchBinding
 import com.example.app.ui.api.models.CATEGORY_ID_EXTRA
-import com.example.app.ui.api.models.productList
+import com.example.app.ui.api.models.LIST_ALL_PRODUCT
 
 class SearchFragment : Fragment() {
 
@@ -71,7 +71,7 @@ class SearchFragment : Fragment() {
 
 
     private fun loadCategories() {
-        productList.forEach { product ->
+        LIST_ALL_PRODUCT.forEach { product ->
             if (!listValue.contains(product.categoryName.toString())) {
                 listValue.add(product.categoryName.toString())
             }

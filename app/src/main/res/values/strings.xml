@@ -87,8 +87,14 @@
         <item>Livraison rapide</item>
         <item>Livraison standart</item>
     </string-array>
+
+    <string name="aboutUs">About us</string>
+    <string name="holder">John Lenon</string>
+    <string name="expiryTitle">Expiry</string>
+    <string name="holderTitle">Holder</string>
+    <string name="buy">ACHETER</string>
+    <string name="recap">Récapitulatif</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="aboutUs">About us</string>
 
 </resources>

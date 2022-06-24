@@ -4,20 +4,13 @@ package com.example.app.ui.pages.search
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import app.R
-import app.databinding.ActivityDetailBinding
 import app.databinding.ActivityResultSearchBinding
-import app.databinding.FragmentHomeBinding
 import com.example.app.ui.api.adaptaters.ProductsAdapter
 import com.example.app.ui.api.models.CATEGORY_ID_EXTRA
 import com.example.app.ui.api.models.Product
-import com.example.app.ui.api.models.productList
+import com.example.app.ui.api.models.LIST_ALL_PRODUCT
 
 
 /**
@@ -54,7 +47,7 @@ class ResultSearchActivity : AppCompatActivity() {
     }
 
     private fun getlistProductSortByCategory(category: String?) {
-        productList.forEach { product ->
+        LIST_ALL_PRODUCT.forEach { product ->
             if (product.categoryName == category) {
                 listValue.add(product)
             }

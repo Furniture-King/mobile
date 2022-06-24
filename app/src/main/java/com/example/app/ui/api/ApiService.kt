@@ -1,36 +1,62 @@
 package com.example.app.ui.api
 
-import com.example.app.ui.api.models.Client
-import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.models.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
-import java.util.*
 
 interface ApiService {
 
 
-    // INSCRIPTION
+    // Sign up
     @Headers("Content-Type: application/json")
-    @POST("clients/sign-up")
-    fun signUp(@Body client: Client): Call<Client>
+    @POST("api/auth/sign-up")
+    suspend fun signUp(@Body loginRequest: LoginRequest): Response<ResponseBody>
 
-    // CONNEXION
+    // Sign in
     @Headers("Content-Type: application/json")
-    @POST("clients/sign-in")
-    fun signIn(@Body client: Client): Call<Client>
+    @POST("api/auth/sign-in")
+    suspend fun signIn(@Body loginRequest: LoginRequest): Response<JwtResponse>
 
-    // OBTENIR TOUS LES PRODUITS
+    // Get all available products
     @GET("products")
-    fun getProductList(): Call<List<Product>>
+    suspend fun getProductList(): Response<List<Product>>
 
-    // OBTENIR TOUS LES CLIENTS
-    @GET("clients")
-    fun getClientList(): Call<List<Client>>
 
-    // MODIFIER UN CLIENT
+    // Add a product in the shopping cart
+    @Headers("Content-Type: application/json")
+    @PUT("baskets/put/client/{clientId}")
+    suspend fun addProductShoppingCart(
+        @Header("authorization") authorization: String,
+        @Path("clientId") clientId: String?,
+        @Body shoppingCartItem: ShoppingCartItem
+    ): Response<ResponseBody>
+
+
+    // Remove a product in the shopping cart
+    @Headers("Content-Type: application/json")
+    @DELETE("baskets/delete/product/{produitId}/client/{clientId}")
+    suspend fun removeProductShoppingCart(
+        @Header("authorization") authorization: String?,
+        @Path("produitId") produitId: String?,
+        @Path("clientId") clientId: String?
+    ): Response<ResponseBody>
+
+
+    // Get all product in the shopping cart
+    @Headers("Content-Type: application/json")
+    @GET("basket/client/{clientId}")
+    suspend fun getShoppingCart(
+        @Header("authorization") authorization: String,
+        @Path("clientId") clientId: String?
+    ): Response<Basket>
+
+
+    // Change the user profil setting
     @PUT("clients/put/{clientId}")
     fun updateProfile(@Path("clientId") @Body user: Client?): Call<Client>
+
 
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num: Int): Response<Post>

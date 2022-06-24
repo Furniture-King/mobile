@@ -1,6 +1,5 @@
 package com.example.app.ui.api.adaptaters
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +11,11 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import app.R
-import com.example.app.ui.api.models.PRODUCT_ID_EXTRA
-import com.example.app.ui.api.models.Product
-import com.example.app.ui.api.models.listProductFavourite
-import com.example.app.ui.api.models.listProductShoppingCart
+import com.example.app.ui.api.addProductShoppingCart
+import com.example.app.ui.api.models.*
+import com.example.app.ui.api.removeProductShoppingCart
 import com.example.app.ui.pages.home.DetailActivity
+import com.example.app.ui.util.showHide
 import com.squareup.picasso.Picasso
 
 
@@ -61,7 +60,7 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
             holder.itemView.context.startActivity(intent)
         }
 
-        return holder.bind(listProduct[position], parentId, listProduct)
+        return holder.bind(listProduct[position], parentId)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -80,7 +79,7 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
         var tvRatingBar = itemView.findViewById<TextView>(R.id.tvRatingbar)
 
 
-        fun bind(product: Product, parentId: Int, listProduct: MutableList<Product>) {
+        fun bind(product: Product, parentId: Int) {
             val price = "${product.price} €"
             tvTitle.text = product.name
             tvPrice.text = price
@@ -89,34 +88,32 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
             tvRatingBar.text = product.stars.toString() + "/5"
 
             if (product.srcImg !== null) {
-                Picasso.get().load(product.srcImg).into(imgProduct);
+                Picasso.get().load(product.srcImg[0]).into(imgProduct);
             }
 
             val imgHeart = arrayOf(imgBlackBorderHeart, imgRedHeart)
             imgBlackBorderHeart.setOnClickListener {
                 showHide(imgHeart)
-                listProductFavourite.add(product)
+                LIST_PRODUCT_FAVOURITE.add(product)
             }
             imgRedHeart.setOnClickListener {
                 showHide(imgHeart)
-                listProductFavourite.remove(product)
+                LIST_PRODUCT_FAVOURITE.remove(product)
             }
 
             val imgCart = arrayOf(imgShoppingCart, imgShoppingCartFill)
             imgShoppingCart.setOnClickListener {
-                showHide(imgCart)
-                listProductShoppingCart.add(product)
+                addProductShoppingCart(product, imgCart)
             }
             imgShoppingCartFill.setOnClickListener {
-                showHide(imgCart)
-                listProductShoppingCart.remove(product)
+                removeProductShoppingCart(product, imgCart)
             }
 
 
-            if (product in listProductFavourite) {
+            if (product in LIST_PRODUCT_FAVOURITE) {
                 showHide(imgHeart)
             }
-            if (product in listProductShoppingCart) {
+            if (product in LIST_PRODUCT_SHOPPING_CART) {
                 showHide(imgCart)
             }
 
@@ -140,14 +137,5 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
                 imgShoppingCartFill.layoutParams.height = 30
             }
         }
-
-
-        // Manage the toggle event on heart's article click
-        fun showHide(imgViews: Array<ImageView>) {
-            for (view in imgViews)
-                view.visibility =
-                    if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
-        }
-
-    }
+  }
 }

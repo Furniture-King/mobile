@@ -9,11 +9,11 @@ import app.R
 import app.databinding.ActivityDetailBinding
 import com.example.app.ui.api.adaptaters.ProductsAdapter
 import com.example.app.ui.api.models.*
+import com.example.app.ui.util.showHide
 import com.squareup.picasso.Picasso
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +22,12 @@ class DetailActivity : AppCompatActivity() {
 
         val product: Product? = intent.getSerializableExtra(PRODUCT_ID_EXTRA) as Product?
         if (product != null) {
-            Picasso.get().load(product.srcImg).into(binding.imgProduct);
+            Picasso.get().load(product.srcImg[0]).into(binding.imgProduct);
             binding.tvTitle.text = product.name
             binding.tvDescription.text = product.description
             binding.tvRatingbar.text = product.stars.toString() + "/5"
             binding.ratingBar.rating = product.stars!!
             binding.btnOrder.text = " ${binding.btnOrder.text} ${product.price} €"
-
-
         }
         var imgBlackBorderHeart = findViewById<ImageView>(R.id.imgBlackBorderHeartDetail)
         var imgRedHeart = findViewById<ImageView>(R.id.imgRedHeartDetail)
@@ -41,24 +39,24 @@ class DetailActivity : AppCompatActivity() {
         imgBlackBorderHeart.setOnClickListener {
             showHide(imgHeart)
             if (product != null) {
-                listProductFavourite.add(product)
+                LIST_PRODUCT_FAVOURITE.add(product)
             }
         }
         imgRedHeart.setOnClickListener {
             showHide(imgHeart)
-            listProductFavourite.remove(product)
+            LIST_PRODUCT_FAVOURITE.remove(product)
         }
 
         val imgCart: Array<ImageView> = arrayOf(imgShoppingCart, imgShoppingCartFill)
         imgShoppingCart.setOnClickListener {
             showHide(imgCart)
             if (product != null) {
-                listProductShoppingCart.add(product)
+                LIST_PRODUCT_SHOPPING_CART.add(product)
             }
         }
         imgShoppingCartFill.setOnClickListener {
             showHide(imgCart)
-            listProductShoppingCart.remove(product)
+            LIST_PRODUCT_SHOPPING_CART.remove(product)
 
         }
 
@@ -66,16 +64,17 @@ class DetailActivity : AppCompatActivity() {
         imgShoppingCartFill.visibility = View.INVISIBLE
 
 
-        if (product in listProductFavourite) {
+        if (product in LIST_PRODUCT_FAVOURITE) {
             showHide(imgHeart)
         }
-        if (product in listProductShoppingCart) {
+        if (product in LIST_PRODUCT_SHOPPING_CART) {
             showHide(imgCart)
         }
 
         binding.recyclerViewProductDetail.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            for (p in productList) {
+            var list : MutableList<Product> = mutableListOf()
+            for (p in LIST_ALL_PRODUCT) {
                 if (p.id != product?.id) {
                      list.add(p)
                 }
@@ -85,10 +84,5 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    // Manage the toggle event on heart's article click
-    fun showHide(imgViews: Array<ImageView>) {
-        for (view in imgViews)
-            view.visibility =
-                if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
-    }
+
 }

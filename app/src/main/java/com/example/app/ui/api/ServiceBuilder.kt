@@ -4,6 +4,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+val USE_API = ServiceBuilder.buildService(ApiService::class.java)
+
 object ServiceBuilder {
     private const val URL ="https://furniturekings-app.herokuapp.com/"
     //CREATE HTTP CLIENT

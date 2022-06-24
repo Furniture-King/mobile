@@ -4,14 +4,13 @@ package com.example.app.ui.api.models
 import android.os.Parcel
 import android.os.Parcelable
 import java.util.*
-import org.bson.types.ObjectId
 import java.io.Serializable
 
 
 var user: Client? = null;
 
 data class Client(
-    var id: ObjectId?,
+    var id: String?,
     var role: String?,
     var email: String?,
     var passwordHash: String?,
