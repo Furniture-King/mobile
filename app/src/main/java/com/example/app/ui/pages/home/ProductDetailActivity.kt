@@ -12,7 +12,14 @@ import com.example.app.ui.api.models.*
 import com.example.app.ui.util.showHide
 import com.squareup.picasso.Picasso
 
-class DetailActivity : AppCompatActivity() {
+/**
+ * Activity of product detail page
+ *
+ * Show more detail about the selected product
+ */
+class ProductDetailActivity : AppCompatActivity() {
+
+    // Link this activity to the view xml
     private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +64,6 @@ class DetailActivity : AppCompatActivity() {
         imgShoppingCartFill.setOnClickListener {
             showHide(imgCart)
             LIST_PRODUCT_SHOPPING_CART.remove(product)
-
         }
 
         imgRedHeart.visibility = View.INVISIBLE
@@ -81,8 +87,5 @@ class DetailActivity : AppCompatActivity() {
             }
             adapter = ProductsAdapter(list)
         }
-
     }
-
-
 }

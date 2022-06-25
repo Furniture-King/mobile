@@ -9,22 +9,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.R
 import com.example.app.ui.api.models.*
-import com.example.app.ui.pages.home.DetailActivity
+import com.example.app.ui.pages.home.ProductDetailActivity
 import com.squareup.picasso.Picasso
 
-
 /**
+ * Product recap adapter
  *
+ * Allow to change dynamically the cart view
  */
-class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val view :View) :
+class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val view: View) :
     RecyclerView.Adapter<ProductsRecapAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val product_card_recap_cell = LayoutInflater.from(parent.context)
             .inflate(R.layout.product_card_recap_cell, parent, false)
-        return ViewHolder(product_card_recap_cell,view)
+        return ViewHolder(product_card_recap_cell, view)
     }
 
     override fun getItemCount(): Int {
@@ -33,7 +33,7 @@ class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val vi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            val intent = Intent(holder.itemView.context, ProductDetailActivity::class.java)
             intent.putExtra(PRODUCT_ID_EXTRA, listProduct[position])
             holder.itemView.context.startActivity(intent)
         }
@@ -56,7 +56,7 @@ class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val vi
         fun bind(product: Product) {
             tvTitle.text = product.name
             tvDescription.text = product.description
-            for (shoppingCartItem in SHOPPING_CART?.basketTab!! ){
+            for (shoppingCartItem in SHOPPING_CART?.basketTab!!) {
                 if (shoppingCartItem.product?.id == product.id) {
                     tvQte.text = shoppingCartItem?.qté.toString()!!
                     tvPrice.text = "${product.price!! * shoppingCartItem?.qté!!} €"
@@ -77,20 +77,20 @@ class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val vi
             var currentQte = tvQte.text.toString().toInt()
             var price = product.price
             if (currentQte + qte != 0) {
-                for (shoppingCartItem in SHOPPING_CART?.basketTab!! ){
+                for (shoppingCartItem in SHOPPING_CART?.basketTab!!) {
                     if (shoppingCartItem.product?.id == product.id) {
                         shoppingCartItem.qté = shoppingCartItem.qté?.plus(qte)
 
-                        tvQte.text = (currentQte+qte).toString()
-                        tvPrice.text = "${(currentQte+qte)*price!!} €"
+                        tvQte.text = (currentQte + qte).toString()
+                        tvPrice.text = "${(currentQte + qte) * price!!} €"
 
-                        TOTAL_PRICE_SHOPPING_CART += qte*price!!
+                        TOTAL_PRICE_SHOPPING_CART += qte * price!!
 
                     }
                 }
                 // TOTAL ORDER PRICE
-                tvTotalPrice.text ="${TOTAL_PRICE_SHOPPING_CART} €"
-                SHOPPING_CART?.basketTotalPrice=TOTAL_PRICE_SHOPPING_CART
+                tvTotalPrice.text = "${TOTAL_PRICE_SHOPPING_CART} €"
+                SHOPPING_CART?.basketTotalPrice = TOTAL_PRICE_SHOPPING_CART
             }
 
 

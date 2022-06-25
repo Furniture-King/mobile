@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import app.R
 import com.example.app.ui.api.models.*
-import com.example.app.ui.pages.home.DetailActivity
 import com.example.app.ui.pages.settings.AddCreditCardActivity
-import com.squareup.picasso.Picasso
 
 
 /**

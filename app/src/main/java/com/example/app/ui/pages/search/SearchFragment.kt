@@ -12,12 +12,17 @@ import app.databinding.FragmentSearchBinding
 import com.example.app.ui.api.models.CATEGORY_ID_EXTRA
 import com.example.app.ui.api.models.LIST_ALL_PRODUCT
 
+/**
+ * Fragment Search
+ *
+ * Allow a user to search products by category
+ */
 class SearchFragment : Fragment() {
 
+    // Link this activity to the view xml
     private var _binding: FragmentSearchBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     val listValue = arrayListOf<String>()

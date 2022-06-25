@@ -6,6 +6,9 @@ package com.example.app.ui.api.models
  */
 var SHOPPING_CART : Basket? = null
 
+/**
+ * Meaning of a shopping cart
+ */
 data class Basket (
     val basketCartId: String?,
     val client: Client?,

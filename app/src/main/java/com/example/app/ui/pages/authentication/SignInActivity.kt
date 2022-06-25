@@ -13,6 +13,7 @@ import app.R
 import com.example.app.ui.MainActivity
 import com.example.app.ui.api.ServiceBuilder
 import com.example.app.ui.api.ApiService
+import com.example.app.ui.api.USE_API
 import com.example.app.ui.api.addProductShoppingCart
 import com.example.app.ui.api.models.AuthManager
 import com.example.app.ui.api.models.LoginRequest
@@ -24,20 +25,20 @@ import kotlinx.coroutines.launch
 import java.net.HttpURLConnection.HTTP_OK
 
 /**
- * Page de connexion
+ * Activity SignIn page
  */
 class SignInActivity : AppCompatActivity(R.layout.activity_sign_in) {
 
+    // The email address
     private lateinit var emailAddress: EditText
+    // The password
     private lateinit var password: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // get reference to all views
         emailAddress = findViewById<EditText>(R.id.emailAddress)
         password = findViewById<EditText>(R.id.password)
-
 
         val tvInscription = findViewById<TextView>(R.id.tvInscription)
         tvInscription.setOnClickListener {
@@ -70,16 +71,15 @@ class SignInActivity : AppCompatActivity(R.layout.activity_sign_in) {
 
     /**
      * Allow to register a new user
+     *
+     * @param activity the current activity
      */
     private fun signIn(activity: Activity) {
         //initiate the service
-        val destinationService = ServiceBuilder.buildService(ApiService::class.java)
-        Log.d("LOGIN emailAddress", "${emailAddress.text}")
-        Log.d("LOGIN password", "${password.text}")
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            val res = destinationService.signIn(
+            val res = USE_API.signIn(
                 LoginRequest(emailAddress.text.toString(), password.text.toString())
             )
 

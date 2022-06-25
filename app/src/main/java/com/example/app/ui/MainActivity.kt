@@ -13,10 +13,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 /**
- * Barre de navigation !
+ * Main activity
+ *
+ * Set up the navigation bar and the principal fragment of the app
  */
 class MainActivity : AppCompatActivity() {
-
+    // Link this activity to the view xml
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

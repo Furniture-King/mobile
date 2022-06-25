@@ -7,6 +7,13 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * ExpiryDateTextWatcher
+ *
+ * Allow to check and correctly display the expiry date of the credit card
+ *
+ * @param edtExpiryDate an input field
+ */
 class ExpiryDateTextWatcher(edtExpiryDate: EditText) : TextWatcher {
     var lastInput=""
     var edtExpiryDate = edtExpiryDate

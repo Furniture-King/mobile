@@ -14,12 +14,16 @@ import com.example.app.ui.api.models.LIST_ALL_PRODUCT
 
 
 /**
- * Barre de navigation !
+ * Activity ResultSearchActivity
+ *
+ * Show to the user the result of the his search for the selected category
  */
 class ResultSearchActivity : AppCompatActivity() {
 
-    // This property is only valid between onCreateView and onDestroyView.
+
+
     var listValue = mutableListOf<Product>()
+    // Link this activity to the view xml
     private lateinit var binding: ActivityResultSearchBinding
 
     @SuppressLint("LongLogTag")

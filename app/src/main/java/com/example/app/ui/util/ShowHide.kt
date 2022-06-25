@@ -3,7 +3,11 @@ package com.example.app.ui.util
 import android.view.View
 import android.widget.ImageView
 
-// Manage the toggle event on heart's article click
+/**
+ * Manage the switch image on the view
+ *
+ * @param imgViews a  list of image view
+ */
 fun showHide(imgViews: Array<ImageView>) {
     for (view in imgViews)
         view.visibility =

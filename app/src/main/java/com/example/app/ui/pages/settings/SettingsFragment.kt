@@ -14,13 +14,15 @@ import com.example.app.ui.MainActivity
 import com.example.app.ui.api.models.*
 import com.example.app.ui.pages.authentication.SignInActivity
 
-
+/**
+ * Fragment Setting page
+ *
+ * Propose to change the user setting
+ */
 class SettingsFragment : Fragment() {
-
+    // Link this activity to the view xml
     private var _binding: FragmentSettingsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -61,7 +63,7 @@ class SettingsFragment : Fragment() {
                 if (JWT?.id == null) {
                     startActivity(Intent(context, SignInActivity::class.java));
                 } else {
-                    startActivity(Intent(context, PaymentActivity::class.java))
+                    startActivity(Intent(context, MeansOfPaymentActivity::class.java))
                 }
             }
         }
@@ -80,11 +82,9 @@ class SettingsFragment : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
+    /**
+     * Allow the user to disconnect
+     */
     fun logout() {
         user = null
         JWT = null
@@ -98,6 +98,11 @@ class SettingsFragment : Fragment() {
         activity?.finish()
         startActivity(Intent(context, MainActivity::class.java));
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 

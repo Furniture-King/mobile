@@ -12,9 +12,9 @@ import com.example.app.ui.pages.settings.AddCreditCardActivity
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [MeansOfPayment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment MeansOfPayment
+ *
+ * Propose the user to register several means of payment
  */
 class MeansOfPayment : Fragment(R.layout.fragment_means_of_payment) {
 
@@ -40,7 +40,9 @@ class MeansOfPayment : Fragment(R.layout.fragment_means_of_payment) {
 
     }
 
-
+    /**
+     * warned a user that this function is not implemented yet
+     */
     fun notAvailableYet() {
         Toast.makeText(
             this.context,

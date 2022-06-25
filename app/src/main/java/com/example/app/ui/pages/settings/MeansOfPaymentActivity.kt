@@ -10,8 +10,13 @@ import androidx.core.view.isEmpty
 import app.R
 import app.databinding.ActivityPaymentBinding
 
-
-class PaymentActivity : AppCompatActivity() {
+/**
+ * Activity MeansOfPayment
+ *
+ * Show all the means of payment that the user had
+ */
+class MeansOfPaymentActivity : AppCompatActivity() {
+    // Link this activity to the view xml
     private lateinit var binding: ActivityPaymentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +38,7 @@ class PaymentActivity : AppCompatActivity() {
                     16 // margin (optional)
                 )
 
-            }
-            else {
+            } else {
                 setVisibility(View.VISIBLE);
                 binding.tvEmptyView.setVisibility(View.GONE);
             }
@@ -49,7 +53,4 @@ class PaymentActivity : AppCompatActivity() {
 
         }
     }
-
-
-
 }

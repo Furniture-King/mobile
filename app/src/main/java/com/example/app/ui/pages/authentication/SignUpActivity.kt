@@ -21,13 +21,13 @@ import java.net.HttpURLConnection.HTTP_OK
  */
 class SignUpActivity : AppCompatActivity(R.layout.activity_sign_up) {
 
+    // The email address
     private var emailAddress: EditText = findViewById(R.id.emailAddress)
+    // The password
     private var password: EditText = findViewById(R.id.password)
+    // The confirm password
     private var confirmPassword: EditText = findViewById(R.id.confirmPassword)
 
-    /**
-     *
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +40,6 @@ class SignUpActivity : AppCompatActivity(R.layout.activity_sign_up) {
         inscriptionButton.setOnClickListener {
             verifyEmailPassword()
         }
-
     }
 
     /**

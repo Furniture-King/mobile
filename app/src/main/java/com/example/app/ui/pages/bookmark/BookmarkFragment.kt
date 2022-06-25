@@ -11,11 +11,16 @@ import app.databinding.FragmentBookmarkBinding
 import com.example.app.ui.api.adaptaters.ProductsAdapter
 import com.example.app.ui.api.models.LIST_PRODUCT_FAVOURITE
 
+/**
+ * Fragment Bookmark
+ *
+ * Show all the favourite user product
+ */
 class BookmarkFragment : Fragment() {
+    // Link this activity to the view xml
     private var _binding: FragmentBookmarkBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

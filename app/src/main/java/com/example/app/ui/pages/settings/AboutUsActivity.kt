@@ -5,7 +5,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import app.databinding.ActivityAboutUsBinding
 
-
+/**
+ * Activity AboutUs
+ */
 class AboutUsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutUsBinding
 

@@ -6,9 +6,12 @@ import android.os.Parcelable
 import java.util.*
 import java.io.Serializable
 
-
+// The user
 var user: Client? = null;
 
+/**
+ * Meaning of a user
+ */
 data class Client(
     var id: String?,
     var role: String?,

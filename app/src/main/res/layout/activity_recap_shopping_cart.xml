@@ -13,7 +13,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnBuy">
+            app:layout_constraintBottom_toTopOf="@+id/btnBuy"
+            android:id="@+id/constraintLayout3"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
         <TextView
                 android:text="Total"
@@ -26,7 +29,8 @@
                 android:background="@color/navy_blue"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/tvTotalPrice"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp" />
 
         <TextView
                 android:id="@+id/tvTotalPrice"
@@ -67,7 +71,9 @@
             android:id="@+id/btnBuy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecap"
@@ -79,6 +85,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvRecap" />
+            app:layout_constraintTop_toBottomOf="@+id/tvRecap"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

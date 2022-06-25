@@ -11,9 +11,9 @@ import app.R
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [ButtonBack.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment RefinerProduct
+ *
+ * The refiner for the search product result
  */
 class RefinerProduct : Fragment(R.layout.fragment_refiner_product) {
 
@@ -21,13 +21,13 @@ class RefinerProduct : Fragment(R.layout.fragment_refiner_product) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lvSortBy = view.findViewById(R.id.lvSortBy) as ListView
-        val lvColors = view.findViewById(R.id.lvColors) as ListView
-        val lvDeliveryTime = view.findViewById(R.id.lvDeliveryTime) as ListView
-
-        val typeSortList = resources.obtainTypedArray(R.array.typeSortList)
-        val colorsList = resources.obtainTypedArray(R.array.colorsList)
-        val deliveryList = resources.obtainTypedArray(R.array.deliveryList)
+//        val lvSortBy = view.findViewById(R.id.lvSortBy) as ListView
+//        val lvColors = view.findViewById(R.id.lvColors) as ListView
+//        val lvDeliveryTime = view.findViewById(R.id.lvDeliveryTime) as ListView
+//
+//        val typeSortList = resources.obtainTypedArray(R.array.typeSortList)
+//        val colorsList = resources.obtainTypedArray(R.array.colorsList)
+//        val deliveryList = resources.obtainTypedArray(R.array.deliveryList)
 
 //        val result = mutableListOf(typeSortList.length())
 //        Log.d("test",result.toString())

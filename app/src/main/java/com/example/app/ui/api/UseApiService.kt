@@ -1,7 +1,6 @@
 package com.example.app.ui.api
 
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,36 +10,31 @@ import com.example.app.ui.util.showHide
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
-
-// Get the shopping cart
-fun order() {
+/**
+ * Allow to make a order
+ *
+ * @return ???
+ */
+fun order(): LiveData<String> {
     //initiate the service
+    val liveData = MutableLiveData<String>()
+
     CoroutineScope(Dispatchers.IO).launch {
         val res =
-            USE_API.getShoppingCart(
+            USE_API.orderProduct(
                 "Bearer " + JWT!!.accessToken,
-                JWT!!.id
             )
         if (res?.code() == HttpURLConnection.HTTP_OK) {
-            println(res.body())
-            println(res.body()?.toString())
-            SHOPPING_CART = res.body()
-            if (SHOPPING_CART?.basketTab!! != null) {
-
-                var listShoppingCartItemProduct: MutableList<Product> = mutableListOf()
-                for (shoppingCartItem in SHOPPING_CART?.basketTab!!) {
-                    listShoppingCartItemProduct.add(shoppingCartItem.product!!)
-                }
-                LIST_PRODUCT_SHOPPING_CART = listShoppingCartItemProduct
-
-            }
-            TOTAL_PRICE_SHOPPING_CART = SHOPPING_CART?.basketTotalPrice!!
+            liveData.postValue(res.body()?.string())
         }
-        println(res)
     }
+    println(liveData)
+    return liveData
 }
 
-// Get the shopping cart
+/**
+ * Get the shopping cart
+ */
 fun getShoppingCart() {
     //initiate the service
     CoroutineScope(Dispatchers.IO).launch {
@@ -50,8 +44,7 @@ fun getShoppingCart() {
                 JWT!!.id
             )
         if (res?.code() == HttpURLConnection.HTTP_OK) {
-            println(res.body())
-            println(res.body()?.toString())
+
             SHOPPING_CART = res.body()
             if (SHOPPING_CART?.basketTab!! != null) {
 
@@ -64,10 +57,15 @@ fun getShoppingCart() {
             }
             TOTAL_PRICE_SHOPPING_CART = SHOPPING_CART?.basketTotalPrice!!
         }
-        println(res)
     }
 }
 
+/**
+ * Add a product to the shopping cart and change the shopping card image view visibility
+ *
+ * @param product The product to add in the shopping cart
+ * @param imgCart The array of images whose visibility will change
+ */
 fun addProductShoppingCart(product: Product, imgCart: Array<ImageView>?) {
 
     if (JWT?.id == null) {
@@ -104,6 +102,12 @@ fun addProductShoppingCart(product: Product, imgCart: Array<ImageView>?) {
     }
 }
 
+/**
+ * Remove a product to the shopping cart and change the shopping card image view visibility
+ *
+ * @param product The product to add in the shopping cart
+ * @param imgCart The array of images whose visibility will change
+ */
 fun removeProductShoppingCart(product: Product, imgCart: Array<ImageView>?) {
 
     if (JWT?.id == null) {
@@ -139,7 +143,12 @@ fun removeProductShoppingCart(product: Product, imgCart: Array<ImageView>?) {
     }
 }
 
-fun populateProducts(): LiveData<MutableList<Product>> {
+/**
+ * Get all product available !
+ *
+ * @return the list of all product available
+ */
+fun getAllProducts(): LiveData<MutableList<Product>> {
     val liveProduct = MutableLiveData<MutableList<Product>>()
     //initiate the service
     val destinationService = ServiceBuilder.buildService(ApiService::class.java)

@@ -10,9 +10,9 @@ import app.R
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [ButtonBack.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment ButtonBack
+ *
+ * Allow to get back on the previous activity
  */
 class ButtonBack : Fragment(R.layout.fragment_button_back) {
 

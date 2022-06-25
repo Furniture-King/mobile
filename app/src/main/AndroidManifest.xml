@@ -27,12 +27,12 @@
 
         <activity android:name="com.example.app.ui.pages.authentication.SignUpActivity" />
 
-        <activity android:name="com.example.app.ui.pages.home.DetailActivity" />
+        <activity android:name="com.example.app.ui.pages.home.ProductDetailActivity" />
 
         <activity android:name="com.example.app.ui.pages.settings.ProfilActivity" />
         <activity android:name="com.example.app.ui.pages.settings.AboutUsActivity" />
         <activity android:name="com.example.app.ui.pages.settings.AddCreditCardActivity" />
-        <activity android:name="com.example.app.ui.pages.settings.PaymentActivity" />
+        <activity android:name="com.example.app.ui.pages.settings.MeansOfPaymentActivity" />
         <activity android:name="com.example.app.ui.pages.settings.CountriesActivity" />
 
         <activity android:name="com.example.app.ui.pages.search.ResultSearchActivity" />

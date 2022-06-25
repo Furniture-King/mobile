@@ -8,6 +8,11 @@ import app.databinding.ActivityAddCreditCardBinding
 import com.example.app.ui.util.CreditCardNumberTextWatcher
 import com.example.app.ui.util.ExpiryDateTextWatcher
 
+/**
+ * Activity AddCreditCard
+ *
+ * Allow to register a credit card
+ */
 class AddCreditCardActivity : AppCompatActivity(R.layout.activity_add_credit_card) {
     private lateinit var binding: ActivityAddCreditCardBinding
 
@@ -30,7 +35,7 @@ class AddCreditCardActivity : AppCompatActivity(R.layout.activity_add_credit_car
         }
 
         binding.btnNext.setOnClickListener {
-            // TODO :dezd
+
             finish()
         }
     }

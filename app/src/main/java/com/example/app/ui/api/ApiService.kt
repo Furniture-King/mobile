@@ -6,25 +6,48 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
+/**
+ * Interface of all API endpoints
+ */
 interface ApiService {
 
-
-    // Sign up
+    /**
+     * Sign up
+     *
+     * @param loginRequest object compose by email and password
+     * @return a response to know if its ok or not about the request
+     */
     @Headers("Content-Type: application/json")
     @POST("api/auth/sign-up")
     suspend fun signUp(@Body loginRequest: LoginRequest): Response<ResponseBody>
 
-    // Sign in
+    /**
+     * Sign in
+     *
+     * @param loginRequest object compose by email and password
+     * @return information related to the user with its token
+     */
     @Headers("Content-Type: application/json")
     @POST("api/auth/sign-in")
     suspend fun signIn(@Body loginRequest: LoginRequest): Response<JwtResponse>
 
-    // Get all available products
+    /**
+     * Get all available products
+     *
+     * @return the product list available
+     */
     @GET("products")
     suspend fun getProductList(): Response<List<Product>>
 
 
-    // Add a product in the shopping cart
+    /**
+     * Add a product in the shopping cart
+     *
+     * @param authorization The token header
+     * @param clientId The user id
+     * @param shoppingCartItem The shopping cart
+     * @return a response to know if its ok or not about the request
+     */
     @Headers("Content-Type: application/json")
     @PUT("baskets/put/client/{clientId}")
     suspend fun addProductShoppingCart(
@@ -33,8 +56,15 @@ interface ApiService {
         @Body shoppingCartItem: ShoppingCartItem
     ): Response<ResponseBody>
 
+    /**
+     * Remove a product in the shopping cart
+     *
+     * @param authorization The token header
+     * @param produitId The product ID
+     * @param clientId The user ID
+     * @return a response to know if its ok or not about the request
+     */
 
-    // Remove a product in the shopping cart
     @Headers("Content-Type: application/json")
     @DELETE("baskets/delete/product/{produitId}/client/{clientId}")
     suspend fun removeProductShoppingCart(
@@ -44,7 +74,13 @@ interface ApiService {
     ): Response<ResponseBody>
 
 
-    // Get all product in the shopping cart
+    /**
+     * Get all product in the shopping cart
+     *
+     * @param authorization The token header
+     * @param clientId The user ID
+     * @return the shopping cart
+     */
     @Headers("Content-Type: application/json")
     @GET("basket/client/{clientId}")
     suspend fun getShoppingCart(
@@ -52,24 +88,19 @@ interface ApiService {
         @Path("clientId") clientId: String?
     ): Response<Basket>
 
+    /**
+     * Order all product in the shopping cart
+     *
+     * @param authorization The token header
+     * @return a response to know if its ok or not about the request
+     */
+    @Headers("Content-Type: application/json")
+    @POST("payment-intents")
+    suspend fun orderProduct(
+        @Header("authorization") authorization: String,
+    ): Response<ResponseBody>
 
-    // Change the user profil setting
-    @PUT("clients/put/{clientId}")
-    fun updateProfile(@Path("clientId") @Body user: Client?): Call<Client>
 
-
-//    @GET("posts/{num}")
-//    suspend fun getPostById(@Path("num") num: Int): Response<Post>
-//
-//    @GET("comments")
-//    suspend fun getCommentsByPost(@Query("postId") postId: Int): Response<MutableList<Comment>>
-//
-////
-////    @GET("comments")
-////    suspend fun getCommentsByPost(@Query("postId") postId : Int): Response<MutableList<>>
-//
-//    @POST("posts")
-//    suspend fun createPost(@Body post: Post): Response<Post>
 }
 
 

@@ -4,6 +4,11 @@ import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
 
+/**
+ * CreditCardNumberTextWatcher
+ *
+ * Allow to correctly display the credit card number
+ */
 class CreditCardNumberTextWatcher : TextWatcher {
     private var current = ""
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}

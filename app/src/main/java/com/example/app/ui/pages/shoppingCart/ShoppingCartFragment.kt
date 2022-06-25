@@ -15,11 +15,16 @@ import com.example.app.ui.api.getShoppingCart
 import com.example.app.ui.api.models.*
 import com.example.app.ui.pages.authentication.SignInActivity
 
+/**
+ * Fragment ShoppingCart
+ *
+ * Show all product in the shopping cart
+ */
 class ShoppingCartFragment : Fragment() {
+    // Link this activity to the view xml
     private var _binding: FragmentShoppingCartBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

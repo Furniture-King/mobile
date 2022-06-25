@@ -14,12 +14,17 @@ import app.databinding.FragmentHomeBinding
 import com.example.app.ui.api.adaptaters.ProductsAdapter
 import com.example.app.ui.api.getShoppingCart
 import com.example.app.ui.api.models.*
-import com.example.app.ui.api.populateProducts
+import com.example.app.ui.api.getAllProducts
 import com.example.app.ui.pages.authentication.SignInActivity
 
-
+/**
+ * Fragment Home page
+ *
+ * Show all product available and all popular product
+ */
 class HomeFragment : Fragment() {
 
+    // Link this fragment to the view xml
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
@@ -37,7 +42,7 @@ class HomeFragment : Fragment() {
 
         isLogged()
 
-        populateProducts().observe(viewLifecycleOwner) {
+        getAllProducts().observe(viewLifecycleOwner) {
             binding.recyclerViewWhatIsUp.apply {
                 setHasFixedSize(true)
                 layoutManager = GridLayoutManager(context, 2)
@@ -63,6 +68,9 @@ class HomeFragment : Fragment() {
 
     }
 
+    /**
+     * Check if the user is already log in the app
+     */
     private fun isLogged() {
         val tvConnexion: TextView = binding.tvConnection
 
