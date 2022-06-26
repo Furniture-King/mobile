@@ -13,9 +13,9 @@ import java.net.HttpURLConnection.HTTP_OK
 
 
 /**
- * Allow to make a order
+ * Get all product by category
  *
- * @return ???
+ * @return a list of product
  */
 fun getProductByCategory(category: String): LiveData<MutableList<Product>> {
     val liveData = MutableLiveData<MutableList<Product>>()
@@ -33,7 +33,7 @@ fun getProductByCategory(category: String): LiveData<MutableList<Product>> {
 /**
  * Allow to make a order
  *
- * @return ???
+ * @return a string response
  */
 fun order(): LiveData<String> {
     val liveData = MutableLiveData<String>()

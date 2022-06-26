@@ -11,8 +11,10 @@ import com.example.app.ui.LIST_ALL_PRODUCT_SORT_BY_CATEGORY
 import com.example.app.ui.LIST_PRODUCT_FAVOURITE
 import com.example.app.ui.PRODUCT_ID_EXTRA
 import com.example.app.ui.adaptaters.ProductsAdapter
+import com.example.app.ui.api.addProductBookmark
 import com.example.app.ui.api.addProductShoppingCart
 import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.removeProductBookmark
 import com.example.app.ui.api.removeProductShoppingCart
 import com.example.app.ui.util.showHide
 import com.example.app.ui.util.showImage
@@ -50,14 +52,14 @@ class ProductDetailActivity : AppCompatActivity() {
         val imgHeart = arrayOf(imgBlackBorderHeart, imgRedHeart)
 
         imgBlackBorderHeart.setOnClickListener {
-            showHide(imgHeart)
             if (product != null) {
-                LIST_PRODUCT_FAVOURITE.add(product)
+                addProductBookmark(product, imgHeart)
             }
         }
         imgRedHeart.setOnClickListener {
-            showHide(imgHeart)
-            LIST_PRODUCT_FAVOURITE.remove(product)
+            if (product != null) {
+                removeProductBookmark(product, imgHeart)
+            }
         }
 
         val imgCart: Array<ImageView> = arrayOf(imgShoppingCart, imgShoppingCartFill)
