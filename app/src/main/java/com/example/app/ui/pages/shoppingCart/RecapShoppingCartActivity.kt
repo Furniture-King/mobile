@@ -81,6 +81,7 @@ class RecapShoppingCartActivity : AppCompatActivity() {
     private fun onPaymentSheetResult(paymentResult: PaymentSheetResult) {
         when (paymentResult) {
             is PaymentSheetResult.Completed -> {
+                startActivity(Intent(applicationContext, MainActivity::class.java));
                 Toast.makeText(applicationContext, "Payment is succesful !", Toast.LENGTH_SHORT)
                     .show()
                 startActivity(Intent(applicationContext, MainActivity::class.java));
