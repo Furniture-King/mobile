@@ -8,8 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import app.R
-import com.example.app.ui.api.ApiService
-import com.example.app.ui.api.ServiceBuilder
+import com.example.app.ui.api.USE_API
 import com.example.app.ui.api.models.LoginRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,15 +21,17 @@ import java.net.HttpURLConnection.HTTP_OK
 class SignUpActivity : AppCompatActivity(R.layout.activity_sign_up) {
 
     // The email address
-    private var emailAddress: EditText = findViewById(R.id.emailAddress)
+    private lateinit var emailAddress: EditText
     // The password
-    private var password: EditText = findViewById(R.id.password)
+    private lateinit var password: EditText
     // The confirm password
-    private var confirmPassword: EditText = findViewById(R.id.confirmPassword)
+    private lateinit var confirmPassword: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        emailAddress = findViewById(R.id.emailAddress)
+        password = findViewById(R.id.password)
+        confirmPassword = findViewById(R.id.confirmPassword)
         val inscription = findViewById<TextView>(R.id.tvConnexion)
         inscription.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
@@ -52,7 +53,7 @@ class SignUpActivity : AppCompatActivity(R.layout.activity_sign_up) {
             finish()
             Toast.makeText(
                 applicationContext,
-                "Bienvenue King !",
+                "Votre compte à bien été enregistré :)",
                 Toast.LENGTH_SHORT
             ).show()
             clearEditText(arrayOf(emailAddress, password, confirmPassword))
@@ -71,10 +72,9 @@ class SignUpActivity : AppCompatActivity(R.layout.activity_sign_up) {
      */
     private fun signUp() {
         //initiate the service
-        val destinationService = ServiceBuilder.buildService(ApiService::class.java)
         CoroutineScope(Dispatchers.IO).launch {
 
-            val res = destinationService.signUp(
+            val res = USE_API.signUp(
                 LoginRequest(emailAddress.text.toString(), password.text.toString())
             )
 

@@ -4,8 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
-import com.example.app.ui.pages.home.HomeFragment
-import kotlinx.coroutines.CoroutineScope
 
 /**
  * Auth manager

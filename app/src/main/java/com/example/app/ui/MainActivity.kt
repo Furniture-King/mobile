@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
+        try {
+            this.supportActionBar!!.hide()
+        } catch (e: NullPointerException) {
+        }
     }
 }

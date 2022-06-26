@@ -1,4 +1,4 @@
-package com.example.app.ui.api.adaptaters
+package com.example.app.ui.adaptaters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,7 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.R
-import com.example.app.ui.api.models.*
+import com.example.app.ui.PRODUCT_ID_EXTRA
+import com.example.app.ui.SHOPPING_CART
+import com.example.app.ui.TOTAL_PRICE_SHOPPING_CART
+import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.putProductShoppingCart
 import com.example.app.ui.pages.home.ProductDetailActivity
 import com.squareup.picasso.Picasso
 
@@ -77,12 +81,13 @@ class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val vi
             var currentQte = tvQte.text.toString().toInt()
             var price = product.price
             if (currentQte + qte != 0) {
+                var newQte = currentQte + qte
                 for (shoppingCartItem in SHOPPING_CART?.basketTab!!) {
                     if (shoppingCartItem.product?.id == product.id) {
                         shoppingCartItem.qté = shoppingCartItem.qté?.plus(qte)
 
-                        tvQte.text = (currentQte + qte).toString()
-                        tvPrice.text = "${(currentQte + qte) * price!!} €"
+                        tvQte.text = (newQte).toString()
+                        tvPrice.text = "${newQte* price!!} €"
 
                         TOTAL_PRICE_SHOPPING_CART += qte * price!!
 
@@ -91,6 +96,7 @@ class ProductsRecapAdapter(private val listProduct: MutableList<Product>, val vi
                 // TOTAL ORDER PRICE
                 tvTotalPrice.text = "${TOTAL_PRICE_SHOPPING_CART} €"
                 SHOPPING_CART?.basketTotalPrice = TOTAL_PRICE_SHOPPING_CART
+                putProductShoppingCart(product,newQte)
             }
 
 

@@ -1,17 +1,10 @@
 package com.example.app.ui.OtherFragment
 
-import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import app.R
-import java.util.Collections.rotate
 
 
 /**
@@ -27,9 +20,8 @@ class ButtonDropDown : Fragment(R.layout.fragment_button_drop_down) {
         imgDropDown.setOnClickListener {
             val refinerProduct =
                 activity?.findViewById(R.id.refinerProduct) as View
-            val imgDropDown = activity?.findViewById(R.id.imgDropDown) as View
 
-            imgDropDown.rotation = if (imgDropDown.rotation == 90F) 270F else 90F
+            imgDropDown.rotation = if (imgDropDown.rotation == 270F) 90F else 270F
             refinerProduct.visibility =
                 if (imgDropDown.rotation == 90F) View.GONE else View.VISIBLE
         }

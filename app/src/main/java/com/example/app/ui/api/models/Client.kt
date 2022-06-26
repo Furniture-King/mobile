@@ -1,13 +1,7 @@
 package com.example.app.ui.api.models
 
 
-import android.os.Parcel
-import android.os.Parcelable
-import java.util.*
 import java.io.Serializable
-
-// The user
-var user: Client? = null;
 
 /**
  * Meaning of a user
@@ -26,7 +20,6 @@ data class Client(
     var city: String?,
     var phone: String?,
     var nbConnection: Int?,
-    var favProduct: List<String>?,
     var createdAt: Long?,
     var updatedAt: Long?,
     ) : Serializable

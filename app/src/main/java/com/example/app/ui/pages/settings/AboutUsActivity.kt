@@ -1,7 +1,6 @@
 package com.example.app.ui.pages.settings
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import app.databinding.ActivityAboutUsBinding
 
@@ -15,9 +14,5 @@ class AboutUsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val tvAboutUs: TextView = binding.tvAboutUs
-        tvAboutUs.text ="ABOUT US"
-
     }
 }

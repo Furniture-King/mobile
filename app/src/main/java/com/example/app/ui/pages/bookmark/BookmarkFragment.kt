@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import app.databinding.FragmentBookmarkBinding
-import com.example.app.ui.api.adaptaters.ProductsAdapter
-import com.example.app.ui.api.models.LIST_PRODUCT_FAVOURITE
+import com.example.app.ui.LIST_PRODUCT_FAVOURITE
+import com.example.app.ui.adaptaters.ProductsAdapter
 
 /**
  * Fragment Bookmark
@@ -39,7 +39,7 @@ class BookmarkFragment : Fragment() {
             }else {
                 Toast.makeText(
                     context,
-                    "Your favourite is empty my lord !",
+                    "Votre panier est vide... Mon roi !",
                     Toast.LENGTH_SHORT
                 ).show()
             }

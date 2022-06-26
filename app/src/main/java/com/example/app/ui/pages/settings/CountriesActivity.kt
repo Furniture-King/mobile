@@ -3,9 +3,7 @@ package com.example.app.ui.pages.settings
 import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
-
 import androidx.appcompat.app.AppCompatActivity
 import app.databinding.ActivityPaysBinding
 import com.example.app.ui.util.getAllCountry

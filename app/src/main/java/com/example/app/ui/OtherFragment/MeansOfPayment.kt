@@ -4,11 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import app.R
 import com.example.app.ui.pages.settings.AddCreditCardActivity
+import com.example.app.ui.util.notAvailableYet
 
 
 /**
@@ -23,32 +23,26 @@ class MeansOfPayment : Fragment(R.layout.fragment_means_of_payment) {
         super.onViewCreated(view, savedInstanceState)
 
         val imgBitCoin = view.findViewById(R.id.imgBitCoin) as ImageView
-        imgBitCoin.setOnClickListener { notAvailableYet() }
+        imgBitCoin.setOnClickListener { this.context?.let { it1 -> notAvailableYet(it1) } }
 
         val imgEthereum = view.findViewById(R.id.imgEthereum) as ImageView
-        imgEthereum.setOnClickListener { notAvailableYet() }
+        imgEthereum.setOnClickListener {
+            this.context?.let { it1 -> notAvailableYet(it1) }
 
-        val imgCreditCard = view.findViewById(R.id.imgCreditCard) as ImageView
-        imgCreditCard.setOnClickListener {
-            val intent = Intent(this.context, AddCreditCardActivity::class.java)
-            startActivity(intent)
+            val imgCreditCard = view.findViewById(R.id.imgCreditCard) as ImageView
+            imgCreditCard.setOnClickListener {
+                val intent = Intent(this.context, AddCreditCardActivity::class.java)
+                startActivity(intent)
+            }
+
+            val imgPayPal = view.findViewById(R.id.imgPayPal) as ImageView
+            imgPayPal.setOnClickListener {
+                this.context?.let { it1 -> notAvailableYet(it1) }
+
+
+            }
+
+
         }
-
-        val imgPayPal = view.findViewById(R.id.imgPayPal) as ImageView
-        imgPayPal.setOnClickListener { notAvailableYet() }
-
-
     }
-
-    /**
-     * warned a user that this function is not implemented yet
-     */
-    fun notAvailableYet() {
-        Toast.makeText(
-            this.context,
-            "Bientôt disponible \uD83D\uDE09",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
 }

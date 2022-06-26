@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet.*
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.constraintlayout.widget.ConstraintSet.BOTTOM
+import androidx.constraintlayout.widget.ConstraintSet.TOP
 import androidx.core.view.isEmpty
 import app.R
 import app.databinding.ActivityPaymentBinding

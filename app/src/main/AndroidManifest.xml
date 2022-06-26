@@ -14,7 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
         <activity
-                android:name="com.example.app.ui.pages.authentication.SignInActivity"
+                android:name="com.example.app.ui.MainActivity"
                 android:exported="true"
                 android:label="@string/app_name">
             <intent-filter>
@@ -23,8 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.app.ui.MainActivity" />
-
+        <activity android:name="com.example.app.ui.pages.authentication.SignInActivity" />
         <activity android:name="com.example.app.ui.pages.authentication.SignUpActivity" />
 
         <activity android:name="com.example.app.ui.pages.home.ProductDetailActivity" />

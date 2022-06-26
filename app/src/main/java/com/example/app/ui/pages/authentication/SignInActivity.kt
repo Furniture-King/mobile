@@ -3,25 +3,22 @@ package com.example.app.ui.pages.authentication
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import app.R
+import com.example.app.ui.JWT
+import com.example.app.ui.LIST_PRODUCT_FAVOURITE
+import com.example.app.ui.LIST_PRODUCT_SHOPPING_CART
 import com.example.app.ui.MainActivity
-import com.example.app.ui.api.ServiceBuilder
-import com.example.app.ui.api.ApiService
 import com.example.app.ui.api.USE_API
+import com.example.app.ui.api.addProductBookmark
 import com.example.app.ui.api.addProductShoppingCart
 import com.example.app.ui.api.models.AuthManager
 import com.example.app.ui.api.models.LoginRequest
-import com.example.app.ui.api.models.JWT
-import com.example.app.ui.api.models.LIST_PRODUCT_SHOPPING_CART
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.net.HttpURLConnection.HTTP_OK
 
 /**
@@ -31,6 +28,7 @@ class SignInActivity : AppCompatActivity(R.layout.activity_sign_in) {
 
     // The email address
     private lateinit var emailAddress: EditText
+
     // The password
     private lateinit var password: EditText
 
@@ -49,6 +47,7 @@ class SignInActivity : AppCompatActivity(R.layout.activity_sign_in) {
         btnConnexion.setOnClickListener {
             verifyEmail()
         }
+
 
     }
 
@@ -87,9 +86,25 @@ class SignInActivity : AppCompatActivity(R.layout.activity_sign_in) {
                 JWT = res?.body()!!
                 JWT?.accessToken?.let { AuthManager.saveToken(it, activity) }
 
-                if (LIST_PRODUCT_SHOPPING_CART.size != 0){
+                // Add
+                if (LIST_PRODUCT_SHOPPING_CART.size != 0) {
                     for (product in LIST_PRODUCT_SHOPPING_CART) {
-                        addProductShoppingCart(product, null)
+                        GlobalScope.launch {
+                            //You can use for background procces
+                            withContext(Dispatchers.Main) {
+                                addProductShoppingCart(product, null)
+                            }
+                        }
+                    }
+                }
+                if (LIST_PRODUCT_FAVOURITE.size != 0) {
+                    for (product in LIST_PRODUCT_FAVOURITE) {
+                        GlobalScope.launch {
+                            //You can use for background procces
+                            withContext(Dispatchers.Main) {
+                                addProductBookmark(product, null)
+                            }
+                        }
                     }
                 }
                 startActivity(Intent(applicationContext, MainActivity::class.java));

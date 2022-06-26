@@ -1,4 +1,4 @@
-package com.example.app.ui.api.adaptaters
+package com.example.app.ui.adaptaters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,11 +11,14 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import app.R
+import com.example.app.ui.PRODUCT_ID_EXTRA
+import com.example.app.ui.api.addProductBookmark
 import com.example.app.ui.api.addProductShoppingCart
-import com.example.app.ui.api.models.*
+import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.removeProductBookmark
 import com.example.app.ui.api.removeProductShoppingCart
 import com.example.app.ui.pages.home.ProductDetailActivity
-import com.example.app.ui.util.showHide
+import com.example.app.ui.util.showImage
 import com.squareup.picasso.Picasso
 
 
@@ -96,12 +99,10 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
 
             val imgHeart = arrayOf(imgBlackBorderHeart, imgRedHeart)
             imgBlackBorderHeart.setOnClickListener {
-                showHide(imgHeart)
-                LIST_PRODUCT_FAVOURITE.add(product)
+                addProductBookmark(product,imgHeart)
             }
             imgRedHeart.setOnClickListener {
-                showHide(imgHeart)
-                LIST_PRODUCT_FAVOURITE.remove(product)
+                removeProductBookmark(product,imgHeart)
             }
 
             val imgCart = arrayOf(imgShoppingCart, imgShoppingCartFill)
@@ -112,12 +113,7 @@ class ProductsAdapter(listProduct: MutableList<Product>) :
                 removeProductShoppingCart(product, imgCart)
             }
 
-            if (product in LIST_PRODUCT_FAVOURITE) {
-                showHide(imgHeart)
-            }
-            if (product in LIST_PRODUCT_SHOPPING_CART) {
-                showHide(imgCart)
-            }
+            showImage(imgHeart,imgCart,product)
 
             if (parentId === R.id.recyclerViewShoppingCart || parentId === R.id.recyclerViewBookmark)
                 cardView.layoutParams.width = WRAP_CONTENT

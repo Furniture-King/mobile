@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import app.R
 import app.databinding.FragmentShoppingCartBinding
-import com.example.app.ui.api.adaptaters.ProductsAdapter
+import com.example.app.ui.JWT
+import com.example.app.ui.LIST_PRODUCT_SHOPPING_CART
+import com.example.app.ui.adaptaters.ProductsAdapter
 import com.example.app.ui.api.getShoppingCart
-import com.example.app.ui.api.models.*
 import com.example.app.ui.pages.authentication.SignInActivity
 
 /**
@@ -73,7 +74,6 @@ class ShoppingCartFragment : Fragment() {
         }
         return root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

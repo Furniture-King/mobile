@@ -9,8 +9,9 @@ import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import app.databinding.FragmentSearchBinding
-import com.example.app.ui.api.models.CATEGORY_ID_EXTRA
-import com.example.app.ui.api.models.LIST_ALL_PRODUCT
+import com.example.app.ui.LIST_ALL_PRODUCT
+import com.example.app.ui.LIST_ALL_PRODUCT_SORT_BY_CATEGORY
+import com.example.app.ui.api.getProductByCategory
 
 /**
  * Fragment Search
@@ -38,8 +39,6 @@ class SearchFragment : Fragment() {
 
         loadCategories()
 
-        binding.searchBar
-
         val valueAdapter: ArrayAdapter<String> =
             ArrayAdapter(
                 requireContext(),
@@ -66,9 +65,10 @@ class SearchFragment : Fragment() {
         })
 
         binding.listView.setOnItemClickListener { parent, view, position, id ->
-            val intentValue = Intent(context, ResultSearchActivity::class.java)
-            intentValue.putExtra(CATEGORY_ID_EXTRA, valueAdapter.getItem(position).toString())
-            startActivity(intentValue)
+            getProductByCategory(valueAdapter.getItem(position).toString()).observe(viewLifecycleOwner) {
+                LIST_ALL_PRODUCT_SORT_BY_CATEGORY = it
+                startActivity(Intent(context, ResultSearchActivity::class.java))
+            }
         }
         return root
     }

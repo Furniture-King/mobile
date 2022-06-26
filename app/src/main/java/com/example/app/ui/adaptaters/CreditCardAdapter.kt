@@ -1,4 +1,4 @@
-package com.example.app.ui.api.adaptaters
+package com.example.app.ui.adaptaters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,7 +9,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import app.R
-import com.example.app.ui.api.models.*
+import com.example.app.ui.CREDIT_CARD_ID_EXTRA
+import com.example.app.ui.api.models.CreditCard
 import com.example.app.ui.pages.settings.AddCreditCardActivity
 
 
@@ -34,7 +35,6 @@ class CreditCardAdapter(listCreditCard: MutableList<CreditCard>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        Log.d("Response", "List Count :${productList.size} ")
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, AddCreditCardActivity::class.java)
             intent.putExtra(CREDIT_CARD_ID_EXTRA, listCreditCard[position])

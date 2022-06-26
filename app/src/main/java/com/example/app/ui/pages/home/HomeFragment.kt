@@ -2,19 +2,21 @@ package com.example.app.ui.pages.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.databinding.FragmentHomeBinding
-import com.example.app.ui.api.adaptaters.ProductsAdapter
-import com.example.app.ui.api.getShoppingCart
-import com.example.app.ui.api.models.*
+import com.example.app.ui.JWT
+import com.example.app.ui.LIST_ALL_PRODUCT
+import com.example.app.ui.adaptaters.ProductsAdapter
 import com.example.app.ui.api.getAllProducts
+import com.example.app.ui.api.getBookmark
+import com.example.app.ui.api.getShoppingCart
 import com.example.app.ui.pages.authentication.SignInActivity
 
 /**
@@ -44,17 +46,15 @@ class HomeFragment : Fragment() {
 
         getAllProducts().observe(viewLifecycleOwner) {
             binding.recyclerViewWhatIsUp.apply {
-                setHasFixedSize(true)
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = ProductsAdapter(it)
-
             }
             binding.recyclerViewPopularArticle.apply {
                 layoutManager =
                     LinearLayoutManager(
                         context,
                         LinearLayoutManager.HORIZONTAL,
-                        true
+                        false
                     )
                 adapter = ProductsAdapter(LIST_ALL_PRODUCT)
             }
@@ -85,11 +85,14 @@ class HomeFragment : Fragment() {
             tvConnexion.text = "Hi King !"
             if (JWT?.username != null) tvConnexion.text =
                 "Hi, " + JWT?.username + "!"
+            Toast.makeText(
+                context,
+                "Bienvenue King !",
+                Toast.LENGTH_SHORT
+            ).show()
             getShoppingCart()
+            getBookmark()
         }
-
-        Log.d("user?.id", "" + user?.id)
-        Log.d("user", user.toString())
 
     }
 

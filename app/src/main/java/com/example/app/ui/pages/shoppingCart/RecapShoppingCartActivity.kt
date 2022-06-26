@@ -1,17 +1,17 @@
 package com.example.app.ui.pages.shoppingCart
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import app.databinding.ActivityRecapShoppingCartBinding
+import com.example.app.ui.LIST_PRODUCT_SHOPPING_CART
 import com.example.app.ui.MainActivity
-import com.example.app.ui.api.adaptaters.ProductsRecapAdapter
-import com.example.app.ui.api.models.LIST_PRODUCT_SHOPPING_CART
-import com.example.app.ui.api.models.TOTAL_PRICE_SHOPPING_CART
+import com.example.app.ui.TOTAL_PRICE_SHOPPING_CART
+import com.example.app.ui.adaptaters.ProductsRecapAdapter
 import com.example.app.ui.api.order
+import com.example.app.ui.api.removeAllProductFromShopping
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
@@ -24,8 +24,10 @@ import com.stripe.android.paymentsheet.PaymentSheetResult
 class RecapShoppingCartActivity : AppCompatActivity() {
     // Link this activity to the view xml
     private lateinit var binding: ActivityRecapShoppingCartBinding
+
     // Secret Client
     private lateinit var secretClient: String
+
     // The result of an payment attempt
     private lateinit var paymentSheet: PaymentSheet
 
@@ -50,7 +52,10 @@ class RecapShoppingCartActivity : AppCompatActivity() {
         }
         binding.btnBuy.setOnClickListener {
             onPayClicked()
+            startActivity(Intent(applicationContext, MainActivity::class.java));
             finish()
+            removeAllProductFromShopping()
+
         }
     }
 
@@ -78,8 +83,8 @@ class RecapShoppingCartActivity : AppCompatActivity() {
     private fun onPaymentSheetResult(paymentResult: PaymentSheetResult) {
         when (paymentResult) {
             is PaymentSheetResult.Completed -> {
-                startActivity(Intent(applicationContext, MainActivity::class.java));
-                finish()
+                Toast.makeText(applicationContext, "Payment is succesful !", Toast.LENGTH_SHORT)
+                    .show()
             }
             is PaymentSheetResult.Canceled -> {
                 Toast.makeText(applicationContext, "Payment Canceled", Toast.LENGTH_SHORT).show()

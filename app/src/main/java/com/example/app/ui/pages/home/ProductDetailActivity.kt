@@ -1,15 +1,21 @@
 package com.example.app.ui.pages.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.R
 import app.databinding.ActivityDetailBinding
-import com.example.app.ui.api.adaptaters.ProductsAdapter
-import com.example.app.ui.api.models.*
+import com.example.app.ui.LIST_ALL_PRODUCT_SORT_BY_CATEGORY
+import com.example.app.ui.LIST_PRODUCT_FAVOURITE
+import com.example.app.ui.PRODUCT_ID_EXTRA
+import com.example.app.ui.adaptaters.ProductsAdapter
+import com.example.app.ui.api.addProductShoppingCart
+import com.example.app.ui.api.models.Product
+import com.example.app.ui.api.removeProductShoppingCart
 import com.example.app.ui.util.showHide
+import com.example.app.ui.util.showImage
 import com.squareup.picasso.Picasso
 
 /**
@@ -56,36 +62,28 @@ class ProductDetailActivity : AppCompatActivity() {
 
         val imgCart: Array<ImageView> = arrayOf(imgShoppingCart, imgShoppingCartFill)
         imgShoppingCart.setOnClickListener {
-            showHide(imgCart)
             if (product != null) {
-                LIST_PRODUCT_SHOPPING_CART.add(product)
+                addProductShoppingCart(product, imgCart)
             }
         }
         imgShoppingCartFill.setOnClickListener {
-            showHide(imgCart)
-            LIST_PRODUCT_SHOPPING_CART.remove(product)
+            if (product != null) {
+                removeProductShoppingCart(product, imgCart)
+            }
         }
 
         imgRedHeart.visibility = View.INVISIBLE
         imgShoppingCartFill.visibility = View.INVISIBLE
 
 
-        if (product in LIST_PRODUCT_FAVOURITE) {
-            showHide(imgHeart)
+        if (product != null) {
+            showImage(imgHeart, imgCart, product)
         }
-        if (product in LIST_PRODUCT_SHOPPING_CART) {
-            showHide(imgCart)
-        }
+
 
         binding.recyclerViewProductDetail.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            var list : MutableList<Product> = mutableListOf()
-            for (p in LIST_ALL_PRODUCT) {
-                if (p.id != product?.id) {
-                     list.add(p)
-                }
-            }
-            adapter = ProductsAdapter(list)
+            adapter = ProductsAdapter(LIST_ALL_PRODUCT_SORT_BY_CATEGORY)
         }
     }
 }

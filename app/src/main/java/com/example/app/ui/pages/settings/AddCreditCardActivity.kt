@@ -1,8 +1,8 @@
 package com.example.app.ui.pages.settings
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import app.R
 import app.databinding.ActivityAddCreditCardBinding
 import com.example.app.ui.util.CreditCardNumberTextWatcher

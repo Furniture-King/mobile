@@ -2,7 +2,6 @@ package com.example.app.ui.pages.settings
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import app.databinding.FragmentSettingsBinding
-import com.example.app.ui.MainActivity
-import com.example.app.ui.api.models.*
+import com.example.app.ui.*
+import com.example.app.ui.api.models.AuthManager
 import com.example.app.ui.pages.authentication.SignInActivity
 
 /**
@@ -22,6 +21,7 @@ import com.example.app.ui.pages.authentication.SignInActivity
 class SettingsFragment : Fragment() {
     // Link this activity to the view xml
     private var _binding: FragmentSettingsBinding? = null
+
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
@@ -38,7 +38,6 @@ class SettingsFragment : Fragment() {
         userProfil.setOnClickListener {
 
             if (activity?.let { AuthManager.isLogged(it) } == true) {
-                Log.d("jwtResponse",JWT?.id.toString())
                 if (JWT?.id == null) {
                     startActivity(Intent(context, SignInActivity::class.java));
                 } else {
@@ -48,13 +47,7 @@ class SettingsFragment : Fragment() {
         }
         val tvAbout: TextView = binding.tvAbout
         tvAbout.setOnClickListener {
-            if (activity?.let { AuthManager.isLogged(it) } == true) {
-                if (JWT?.id == null) {
-                    startActivity(Intent(context, SignInActivity::class.java));
-                } else {
-                    startActivity(Intent(context, AboutUsActivity::class.java))
-                }
-            }
+            startActivity(Intent(context, AboutUsActivity::class.java))
         }
 
         val tvPayment: TextView = binding.tvPayment
@@ -69,16 +62,14 @@ class SettingsFragment : Fragment() {
         }
 
         val logout: Button = binding.logout
+        if (JWT?.id == null) {
+            logout.visibility = View.INVISIBLE
+        }
         logout.setOnClickListener {
             logout()
-            if (activity?.let { AuthManager.isLogged(it) } == true) {
-                if (JWT?.id == null) {
-                    startActivity(Intent(context, SignInActivity::class.java));
-                } else {
-                    startActivity(Intent(context, MainActivity::class.java))
-                }
-            }
+            startActivity(Intent(context, MainActivity::class.java))
         }
+
         return root
     }
 
@@ -86,7 +77,6 @@ class SettingsFragment : Fragment() {
      * Allow the user to disconnect
      */
     fun logout() {
-        user = null
         JWT = null
         SHOPPING_CART = null
         LIST_PRODUCT_SHOPPING_CART = mutableListOf()

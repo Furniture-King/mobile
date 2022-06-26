@@ -2,11 +2,6 @@ package com.example.app.ui.api.models
 
 
 /**
- * The shopping cart
- */
-var SHOPPING_CART : Basket? = null
-
-/**
  * Meaning of a shopping cart
  */
 data class Basket (
