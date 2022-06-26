@@ -52,10 +52,8 @@ class RecapShoppingCartActivity : AppCompatActivity() {
         }
         binding.btnBuy.setOnClickListener {
             onPayClicked()
-            startActivity(Intent(applicationContext, MainActivity::class.java));
             finish()
             removeAllProductFromShopping()
-
         }
     }
 
@@ -85,6 +83,8 @@ class RecapShoppingCartActivity : AppCompatActivity() {
             is PaymentSheetResult.Completed -> {
                 Toast.makeText(applicationContext, "Payment is succesful !", Toast.LENGTH_SHORT)
                     .show()
+                startActivity(Intent(applicationContext, MainActivity::class.java));
+
             }
             is PaymentSheetResult.Canceled -> {
                 Toast.makeText(applicationContext, "Payment Canceled", Toast.LENGTH_SHORT).show()
